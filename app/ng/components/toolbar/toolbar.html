@@ -1,16 +1,22 @@
-<div class="md-toolbar-tools">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="md-toolbar-tools" >
     <div ncy-breadcrumb class="ui-breadcrumbs md-title">
     </div>
+
     <span flex></span>
 
     <!-- not logged in -->
     <span class="md-body-2" hide-xs ng-if="!loggedIn">Hello there, have a look around.</span>
+
+
     <md-menu md-position-mode="target-right target" ng-if="!loggedIn">
         <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
             <md-icon md-menu-origin md-svg-icon="navigation:ic_more_vert_24px"></md-icon>
         </md-button>
+
         <md-menu-content>
             <md-menu-item>
+
                 <md-button ng-click="showLoginDialog()">
                     Log in
                 </md-button>
@@ -22,6 +28,8 @@
             </md-menu-item>
         </md-menu-content>
     </md-menu>
+
+
 
 
     <!-- logged in -->

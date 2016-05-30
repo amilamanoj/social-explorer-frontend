@@ -3,6 +3,12 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', ['ui.router', 'myApp.projects', 'templates', 'ncy-angular-breadcrumb', 'ngMaterial', 'ngMessages'])
 
+    .config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('amber')
+            .accentPalette('green');
+    })
+
     .config(function($stateProvider, $urlRouterProvider, $mdIconProvider, $resourceProvider, $httpProvider, $breadcrumbProvider) {
 
         // For any unmatched url, redirect to /projects
