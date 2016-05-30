@@ -1,0 +1,27 @@
+{
+  "name": "social-explorer-frontend",
+  "description": "Social Explorer platform frontend",
+  "version": "0.0.1",
+  "homepage": "https://bitbucket.org/seba_50/seba-project#readme",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.2",
+    "angular-resource": "^1.5.2",
+    "normalize-libsass": "^1.0.3",
+    "angular-ui-router": "^0.2.18",
+    "material-design-icons": "^2.2.3",
+    "angular-material": "^1.0.7",
+    "angular-breadcrumb": "^0.4.1"
+  },
+  "overrides": {
+    "angular-utils-ui-breadcrumbs": {
+      "main": "uiBreadcrumbs.js"
+    },
+    "material-design-icons": {
+      "main": "sprites/svg-sprite/*.svg"
+    }
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.2"
+  }
+}
