@@ -28,7 +28,8 @@ angular.module('myApp.projects')
             },
 
             ncyBreadcrumb: {
-                label: "Projects"
+                label: "Projects",
+                parent: "root"
             }
 
         }

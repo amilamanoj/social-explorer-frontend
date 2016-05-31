@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', ['ui.router', 'myApp.projects', 'templates', 'ncy-angular-breadcrumb',
+angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile', 'templates', 'ncy-angular-breadcrumb',
     'ngMaterial', 'ngMessages','angular-carousel'])
 
     .config(function($stateProvider, $urlRouterProvider, $mdIconProvider, $resourceProvider, $httpProvider, $breadcrumbProvider, $mdThemingProvider) {
@@ -13,8 +13,11 @@ angular.module('myApp', ['ui.router', 'myApp.projects', 'templates', 'ncy-angula
         $stateProvider
             .state('root', {
 
-                abstract: true,
-                templateUrl: "views/root/root.html"
+                // abstract: true,
+                templateUrl: "views/root/root.html",
+                ncyBreadcrumb: {
+                    label: "Home"
+                }
             });
 
         // $mdIconProvider

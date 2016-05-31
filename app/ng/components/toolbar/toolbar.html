@@ -17,6 +17,9 @@
     <!-- logged in -->
     <span class="md-body-2" ng-if="loggedIn">Hello, {{user.username}}</span>
 
+    <md-button ng-if="loggedIn" ng-click="goToProfile()">
+        My Profile
+    </md-button>
     <md-button ng-if="loggedIn" ng-click="logout()">
         Log out
     </md-button>
