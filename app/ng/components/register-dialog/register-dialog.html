@@ -16,6 +16,13 @@
             </div>
         </md-input-container>
         <md-input-container class="md-block">
+            <label>E-Mail</label>
+            <input type="text" required name="email" ng-model="email">
+            <div ng-messages="registerForm.username.$error">
+                <div ng-message="required">E-Mail is required.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
             <label>Password</label>
             <input type="password" required name="password" ng-model="pwd">
             <div ng-messages="registerForm.password.$error">
