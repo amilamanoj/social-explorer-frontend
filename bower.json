@@ -11,7 +11,8 @@
     "angular-ui-router": "^0.2.18",
     "material-design-icons": "^2.2.3",
     "angular-material": "^1.0.7",
-    "angular-breadcrumb": "^0.4.1"
+    "angular-breadcrumb": "^0.4.1",
+    "angular-carousel": "^1.0.1"
   },
   "overrides": {
     "angular-utils-ui-breadcrumbs": {

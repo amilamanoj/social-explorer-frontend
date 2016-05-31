@@ -1,4 +1,10 @@
 <div layout="row" layout-wrap>
-    <md-card mv-project-card class="mv-card" project="project" ng-repeat="project in projects"></md-card>
+    <!--<md-card mv-project-card class="mv-card" project="project" ng-repeat="project in projects"></md-card>-->
+    <ul rn-carousel class="image">
+        <li ng-repeat="project in projects">
+            <div >{{ project.title }}</div>
+            <div ><img data-ng-src="data:image/png;base64,{{project.img}}" /></div>
+        </li>
+    </ul>
 </div>
 

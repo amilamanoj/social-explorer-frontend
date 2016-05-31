@@ -1,7 +1,8 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', ['ui.router', 'myApp.projects', 'templates', 'ncy-angular-breadcrumb', 'ngMaterial', 'ngMessages'])
+angular.module('myApp', ['ui.router', 'myApp.projects', 'templates', 'ncy-angular-breadcrumb',
+    'ngMaterial', 'ngMessages','angular-carousel'])
 
     .config(function($stateProvider, $urlRouterProvider, $mdIconProvider, $resourceProvider, $httpProvider, $breadcrumbProvider, $mdThemingProvider) {
 
@@ -33,7 +34,7 @@ angular.module('myApp', ['ui.router', 'myApp.projects', 'templates', 'ncy-angula
 
         $httpProvider.interceptors.push('reqErrInterceptor');
         //auth interceptor
-        // $httpProvider.interceptors.push('authInterceptor');
+        $httpProvider.interceptors.push('authInterceptor');
 
         $breadcrumbProvider.setOptions({
             templateUrl:"components/breadcrumbs/breadcrumbs.html",
