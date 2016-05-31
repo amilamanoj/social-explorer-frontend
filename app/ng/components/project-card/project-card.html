@@ -1,0 +1,23 @@
+<md-card-title>
+
+    <md-card-title-text>
+        <span class="md-headline">{{project.title}}</span>
+        <!--<span class="md-subhead"></span>-->
+    </md-card-title-text>
+    <md-card-title-media>
+        <!--<img class="mv-card-pic" ng-src="{{project.posters.thumbnail}}" />-->
+
+    </md-card-title-media>
+</md-card-title>
+<md-card-content>
+    city: {{project.city}} | country: {{project.country}}
+</md-card-content>
+<md-card-actions layout="row" layout-align="end center">
+    <md-button class="md-ink-ripple md-accent" ui-sref="projects.detail({projectId: project._id })">
+        Details
+    </md-button>
+</md-card-actions>
+
+        <!--<a class="mdl-button mdl-button&#45;&#45;colored mdl-js-button mdl-js-ripple-effect" href="#/projects/{{project._id}}">-->
+
+

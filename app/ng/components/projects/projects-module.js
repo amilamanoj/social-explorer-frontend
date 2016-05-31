@@ -1,6 +1,6 @@
 angular.module('myApp.projects', ['ngResource', 'ui.router'])
 
-.config(function ($stateProvider, $urlRouterProvider, projectListState) {
+.config(function ($stateProvider, $urlRouterProvider, projectListState, projectDetailsState) {
     $stateProvider
 
         .state('projects', {
@@ -35,7 +35,7 @@ angular.module('myApp.projects', ['ngResource', 'ui.router'])
         // So you have a new state 'list' within the parent 'home' state.
         .state(projectListState.name, projectListState.options)
 
-        // .state(projectDetailsState.name, projectDetailsState.options);
+        .state(projectDetailsState.name, projectDetailsState.options);
 
 });
 

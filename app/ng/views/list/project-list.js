@@ -36,22 +36,10 @@ angular.module('myApp.projects')
     })
 
     .controller('ProjectListCtrl', function($scope, Project) {
-        console.log("in ProjectListCtrl");
         console.log("scope: " + $scope);
         $scope.projects = Project.query();
         console.log("projects: " + $scope.projects);
-        var testproject1 = {
-            _id: 1,
-            title: "Build a school",
-            description: "Help build a school for Jian's village"
-        };
-        var testproject2 = {
-            _id: 1,
-            title: "Teach english",
-            description: "Help teach English to Nico's class"
-        };
-        $scope.projects = [testproject1, testproject2];
-        console.log("projects: " + $scope.projects);
+
         // $scope.$on('projectCreated', function(ev, project){
         //     $scope.projects.push(project);
         // });
