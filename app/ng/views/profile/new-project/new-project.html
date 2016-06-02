@@ -14,7 +14,7 @@
         <md-input-container class="md-block">
             <md-icon md-svg-icon="action:ic_assignment_turned_in_24px"></md-icon>
             <label>Objective</label>
-            <input md-maxlength="30" required md-no-asterisk name="objective" ng-model="project.objective">
+            <input md-maxlength="50" required md-no-asterisk name="objective" ng-model="project.objective">
             <div ng-messages="projectForm.objective.$error">
                 <div ng-message="required">This is required.</div>
             </div>
@@ -23,9 +23,9 @@
 
 
 
-            <md-datepicker ng-model="fromDate" md-placeholder="From"></md-datepicker>
+            <md-datepicker ng-model="project.fromDate" md-placeholder="From"></md-datepicker>
 
-            <md-datepicker ng-model="toDate" md-placeholder="To"></md-datepicker>
+            <md-datepicker ng-model="project.toDate" md-placeholder="To"></md-datepicker>
 
         <md-input-container class="md-block">
             <md-icon md-svg-icon="action:ic_assignment_24px"></md-icon>
@@ -36,9 +36,17 @@
             </div>
         </md-input-container>
 
+        <md-button ng-click="saveProject()">
+            <md-icon md-svg-icon="content:ic_save_24px"></md-icon>
+            Create Project
+        </md-button>
+        <md-button ng-click="cancel()">
+            <md-icon md-svg-icon="navigation:ic_cancel_24px"></md-icon>
+            Cancel
+        </md-button>
 
-        <p style="font-size:.8em; width: 100%; text-align: center;">
-            Make sure to include <a href="https://docs.angularjs.org/api/ngMessages" target="_blank">ngMessages</a> module when using ng-message markup.
-        </p>
+        <!--<p style="font-size:.8em; width: 100%; text-align: center;">-->
+            <!--Make sure to include <a href="https://docs.angularjs.org/api/ngMessages" target="_blank">ngMessages</a> module when using ng-message markup.-->
+        <!--</p>-->
     </form>
 </md-content>

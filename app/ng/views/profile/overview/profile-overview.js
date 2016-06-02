@@ -34,12 +34,9 @@ angular.module('myApp.profile')
     })
 
     .controller('ProfileOverviewCtrl', function($scope,$state, Project) {
-        console.log("scope is: " + $scope);
         $scope.projects = Project.query();
-        // console.log("profile: " + $scope.projects);
 
-
-            $scope.goToCreateProject = goToCreateProject;
+        $scope.goToCreateProject = goToCreateProject;
 
         function goToCreateProject(){
             console.log("going to create project");

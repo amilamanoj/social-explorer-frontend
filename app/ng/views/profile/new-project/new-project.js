@@ -33,11 +33,34 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileCreateProjCtrl', function($scope, Project) {
-        console.log("scope is: " + $scope);
-        $scope.projects = Project.query();
-        // console.log("profile: " + $scope.projects);
+    .controller('ProfileCreateProjCtrl', function($state, $scope, $rootScope, Project, currUser) {
 
+        $scope.saveProject = saveProject;
+        $scope.cancel = cancel;
+
+        function saveProject(){
+            console.log("create project");
+            $scope.newProject = new Project();
+            $scope.newProject.user = currUser.getUser()._id;
+            $scope.newProject.title = this.project.title;
+            $scope.newProject.objective = this.project.objective;
+            $scope.newProject.description = this.project.description;
+            $scope.newProject.from = this.project.fromDate;
+            $scope.newProject.to = this.project.toDate;
+
+            console.log($scope.newProject);
+
+            $scope.newProject.$save()
+                .then(function(){
+                    $rootScope.$broadcast('projectCreated', $scope.newProject);
+                }).catch(function(e){
+                console.log("error: " + e)
+            });
+        }
+
+        function cancel(){
+            $state.go('profile.overview')
+        }
 
 
 

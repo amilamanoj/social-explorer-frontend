@@ -41,9 +41,9 @@ angular.module('myApp.projects')
         $scope.projects = Project.query();
         console.log("projects: " + $scope.projects);
 
-        // $scope.$on('projectCreated', function(ev, project){
-        //     $scope.projects.push(project);
-        // });
+        $scope.$on('projectCreated', function(ev, project){
+            $scope.projects.push(project);
+        });
 
 
     });
