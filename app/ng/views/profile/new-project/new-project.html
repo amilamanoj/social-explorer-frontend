@@ -10,7 +10,6 @@
             </div>
         </md-input-container>
 
-
         <md-input-container class="md-block">
             <md-icon md-svg-icon="action:ic_assignment_turned_in_24px"></md-icon>
             <label>Objective</label>
@@ -20,12 +19,31 @@
             </div>
         </md-input-container>
 
+        <div layout="row">
+            <md-input-container class="md-block">
+                <md-icon md-svg-icon="maps:ic_my_location_24px"></md-icon>
+                <label>Country</label>
+                <input md-maxlength="10" required md-no-asterisk name="objective" ng-model="project.country">
+                <div ng-messages="projectForm.country.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <md-icon md-svg-icon="social:ic_location_city_24px"></md-icon>
+                <label>City</label>
+                <input md-maxlength="50" required md-no-asterisk name="objective" ng-model="project.city">
+                <div ng-messages="projectForm.city.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+        </div>
 
+        <div layout="row">
 
+        <md-datepicker ng-model="project.fromDate" md-placeholder="From"></md-datepicker>
 
-            <md-datepicker ng-model="project.fromDate" md-placeholder="From"></md-datepicker>
-
-            <md-datepicker ng-model="project.toDate" md-placeholder="To"></md-datepicker>
+        <md-datepicker ng-model="project.toDate" md-placeholder="To"></md-datepicker>
+        </div>
 
         <md-input-container class="md-block">
             <md-icon md-svg-icon="action:ic_assignment_24px"></md-icon>

@@ -33,7 +33,7 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileCreateProjCtrl', function($state, $scope, $rootScope, Project, currUser) {
+    .controller('ProfileCreateProjCtrl', function($state, $scope, $rootScope, $mdToast, Project, currUser) {
 
         $scope.saveProject = saveProject;
         $scope.cancel = cancel;
@@ -43,18 +43,27 @@ angular.module('myApp.profile')
             $scope.newProject = new Project();
             $scope.newProject.user = currUser.getUser()._id;
             $scope.newProject.title = this.project.title;
+            $scope.newProject.country = this.project.country;
+            $scope.newProject.city = this.project.city;
             $scope.newProject.objective = this.project.objective;
             $scope.newProject.description = this.project.description;
-            $scope.newProject.from = this.project.fromDate;
-            $scope.newProject.to = this.project.toDate;
+            $scope.newProject.fromDate = this.project.fromDate;
+            $scope.newProject.toDate = this.project.toDate;
 
+
+
+            console.log(this.project.country);
             console.log($scope.newProject);
 
             $scope.newProject.$save()
                 .then(function(){
                     $rootScope.$broadcast('projectCreated', $scope.newProject);
+                    $state.go('profile.overview');
+                    showSimpleToast("Project created!")
                 }).catch(function(e){
-                console.log("error: " + e)
+                console.log("error: " + e);
+                showSimpleToast("Project creation failed: " + e);
+
             });
         }
 
@@ -62,6 +71,15 @@ angular.module('myApp.profile')
             $state.go('profile.overview')
         }
 
+        function showSimpleToast(txt){
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent(txt)
+                        .position('bottom right')
+                        .hideDelay(3000)
+
+                );
+            }
 
 
     });
