@@ -1,23 +1,15 @@
 angular.module('myApp.profile', ['ngResource', 'ui.router'])
-    .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-        $scope.close = function () {
-            // Component lookup should always be available since we are not using `ng-if`
-            $mdSidenav('left').close()
-                .then(function () {
-                    $log.debug("close LEFT is done");
-                });
+    // .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    // })
 
-        };
-    })
-
-.config(function ($stateProvider, $urlRouterProvider, profileOverviewState) {
+.config(function ($stateProvider, $urlRouterProvider, profileOverviewState,profileCreateProjState) {
     $stateProvider
 
         .state('profile', {
 
             // With abstract set to true, that means this state can not be explicitly activated.
             // It can only be implicitly activated by activating one of its children.
-            // abstract: true,
+            abstract: true,
             parent: 'root',
 
             // This abstract state will prepend '/profile' onto the urls of all its children.
@@ -47,6 +39,8 @@ angular.module('myApp.profile', ['ngResource', 'ui.router'])
                 //     controller: 'projectListButtonCtrl'
                 // }
             },
+            // templateUrl: "views/profile/profile.html",
+
             ncyBreadcrumb: {
                 label: "Profile",
                 parent: 'root'
@@ -57,9 +51,9 @@ angular.module('myApp.profile', ['ngResource', 'ui.router'])
 
         // Using a '.' within a state name declares a child within a parent.
         // So you have a new state 'list' within the parent 'home' state.
-        .state(profileOverviewState.name, profileOverviewState.options);
+        .state(profileOverviewState.name, profileOverviewState.options)
 
-        // .state(profileAccountState.name, profileAccountState.options);
+        .state(profileCreateProjState.name, profileCreateProjState.options);
 
 });
 

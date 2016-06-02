@@ -13,18 +13,18 @@ angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile', 'templa
         $stateProvider
             .state('root', {
 
-                // abstract: true,
+                abstract: true,
                 templateUrl: "views/root/root.html",
                 ncyBreadcrumb: {
                     label: "Home"
                 }
             });
 
-        // $mdIconProvider
+        $mdIconProvider
         //     .iconSet('content', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-content.svg')
-        //     .iconSet('action', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-action.svg')
-        //     .iconSet('editor', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-editor.svg')
-        //     .iconSet('navigation', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg');
+            .iconSet('action', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-action.svg')
+            .iconSet('editor', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-editor.svg')
+            .iconSet('navigation', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg');
 
         //this overrides the defaults actiosn for all $resources
         angular.extend($resourceProvider.defaults.actions, {
@@ -41,6 +41,7 @@ angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile', 'templa
 
         $breadcrumbProvider.setOptions({
             templateUrl:"components/breadcrumbs/breadcrumbs.html",
+            includeAbstract : true
         });
 
         // color and theme of the toolbar

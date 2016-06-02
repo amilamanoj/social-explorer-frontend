@@ -1,0 +1,44 @@
+<md-content layout-padding>
+    <form name="projectForm">
+        <h3>Create new project</h3>
+        <md-input-container class="md-block">
+            <md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>
+            <label>Project Name</label>
+            <input required name="projectName" ng-model="project.title">
+            <div ng-messages="projectForm.projectName.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+
+
+        <md-input-container class="md-block">
+            <md-icon md-svg-icon="action:ic_assignment_turned_in_24px"></md-icon>
+            <label>Objective</label>
+            <input md-maxlength="30" required md-no-asterisk name="objective" ng-model="project.objective">
+            <div ng-messages="projectForm.objective.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+
+
+
+
+            <md-datepicker ng-model="fromDate" md-placeholder="From"></md-datepicker>
+
+            <md-datepicker ng-model="toDate" md-placeholder="To"></md-datepicker>
+
+        <md-input-container class="md-block">
+            <md-icon md-svg-icon="action:ic_assignment_24px"></md-icon>
+            <label>Description</label>
+            <textarea md-maxlength="500" rows="5" required md-no-asterisk name="description" ng-model="project.description"></textarea>
+            <div ng-messages="projectForm.description.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+
+
+        <p style="font-size:.8em; width: 100%; text-align: center;">
+            Make sure to include <a href="https://docs.angularjs.org/api/ngMessages" target="_blank">ngMessages</a> module when using ng-message markup.
+        </p>
+    </form>
+</md-content>

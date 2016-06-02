@@ -51,7 +51,7 @@ angular.module('myApp')
 
                 function goToProfile(){
                     console.log("going to profile");
-                    $state.go('profile')
+                    $state.go('profile.overview')
                 }
 
                 function showSimpleToast(txt){

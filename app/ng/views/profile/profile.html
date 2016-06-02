@@ -1,32 +1,23 @@
 <div layout="column" style="height:500px;" ng-cloak>
 <section layout="row" flex="">
 
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"  md-whiteframe="4">
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true"  md-whiteframe="4">
 
         <md-toolbar class="md-theme-indigo">
             <h1 class="md-toolbar-tools">Hello, {{user.username}}</h1>
         </md-toolbar>
-        <md-content layout-padding="" ng-controller="LeftCtrl">
+        <md-content layout-padding="">
 
-            <p hide-md="" show-gt-md="">
-                This sidenav is locked open on your device. To go back to the default behavior,
-                narrow your display.
+            <p>
+                Your rating:
             </p>
         </md-content>
 
     </md-sidenav>
 
-    <md-content flex="" layout-padding="">
-
-        <div layout="column" layout-fill="" layout-align="top center">
-            <p>
-                The left sidenav will 'lock open' on a medium (>=960px wide) device.
-            </p>
+    <md-content role="main"  ui-view="content">
 
 
-        </div>
-
-        <div flex=""></div>
 
     </md-content>
 
