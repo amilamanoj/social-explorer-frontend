@@ -40,7 +40,8 @@ angular.module('myApp.profile', ['ngResource', 'ui.router'])
                 // }
             },
             // templateUrl: "views/profile/profile.html",
-
+            data : {requireLogin : true },
+            
             ncyBreadcrumb: {
                 label: "Profile",
                 parent: 'root'

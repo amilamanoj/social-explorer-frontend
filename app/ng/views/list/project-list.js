@@ -37,9 +37,7 @@ angular.module('myApp.projects')
     })
 
     .controller('ProjectListCtrl', function($scope, Project) {
-        console.log("scope: " + $scope);
         $scope.projects = Project.query();
-        console.log("projects: " + $scope.projects);
 
         $scope.$on('projectCreated', function(ev, project){
             $scope.projects.push(project);
