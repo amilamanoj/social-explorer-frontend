@@ -33,7 +33,7 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileOverviewCtrl', function($scope,$state, currUser, Project) {
+    .controller('ProfileOverviewCtrl', function($scope, $state, $mdDialog, currUser, Project) {
         $scope.projects = Project.query();
 
         $scope.goToCreateProject = goToCreateProject;
@@ -52,7 +52,21 @@ angular.module('myApp.profile')
                 return false;
             }
         };
-
+        
+        $scope.confirmAndDelete = function(ev, proj) {
+            var confirm = $mdDialog.confirm()
+                .title("Delete the project?")
+                .textContent('Your project: "' + proj.title + '" will be deleted.')
+                .ariaLabel('Delete?')
+                .targetEvent(ev)
+                .ok('Delete project')
+                .cancel('Cancel');
+            $mdDialog.show(confirm).then(function() {
+                proj.$delete();
+            }, function() {
+                $scope.status = 'Canceled.';
+            });
+        };
 
     });
 
