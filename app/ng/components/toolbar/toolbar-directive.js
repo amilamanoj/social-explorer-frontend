@@ -47,6 +47,7 @@ angular.module('myApp')
 
                 function logout(){
                     currUser.logout();
+                    $state.go('projects.list')
                 }
 
                 function goToProfile(){
