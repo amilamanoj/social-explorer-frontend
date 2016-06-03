@@ -49,10 +49,8 @@ angular.module('myApp.profile')
             $scope.newProject.description = this.project.description;
             $scope.newProject.fromDate = this.project.fromDate;
             $scope.newProject.toDate = this.project.toDate;
+            $scope.newProject.img = this.project.image.base64;
 
-
-
-            console.log(this.project.country);
             console.log($scope.newProject);
 
             $scope.newProject.$save()

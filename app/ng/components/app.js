@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile', 'templates', 'ncy-angular-breadcrumb',
-    'ngMaterial', 'ngMessages','angular-carousel'])
+    'ngMaterial', 'ngMessages','angular-carousel', 'naif.base64'])
 
     .config(function($stateProvider, $urlRouterProvider, $mdIconProvider, $resourceProvider, $httpProvider, $breadcrumbProvider, $mdThemingProvider) {
 

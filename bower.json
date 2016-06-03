@@ -12,7 +12,8 @@
     "material-design-icons": "^2.2.3",
     "angular-material": "^1.0.7",
     "angular-breadcrumb": "^0.4.1",
-    "angular-carousel": "^1.0.1"
+    "angular-carousel": "^1.0.1",
+    "angular-base64-upload": "^0.1.19"
   },
   "overrides": {
     "angular-utils-ui-breadcrumbs": {
