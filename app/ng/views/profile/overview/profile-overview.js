@@ -33,7 +33,7 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileOverviewCtrl', function($scope,$state, Project) {
+    .controller('ProfileOverviewCtrl', function($scope,$state, currUser, Project) {
         $scope.projects = Project.query();
 
         $scope.goToCreateProject = goToCreateProject;
@@ -42,6 +42,16 @@ angular.module('myApp.profile')
             console.log("going to create project");
             $state.go('profile.createproj')
         }
+
+        $scope.userFilter = function (project) {
+            var projectUser = project.user;
+            var loggedInUser = currUser.getUser();
+            if (projectUser && loggedInUser) {
+                return projectUser === loggedInUser._id;
+            } else {
+                return false;
+            }
+        };
 
 
     });
