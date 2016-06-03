@@ -26,7 +26,8 @@ angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile', 'templa
             .iconSet('editor', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-editor.svg')
             .iconSet('social', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-social.svg')
             .iconSet('maps', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-maps.svg')
-            .iconSet('navigation', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg');
+            .iconSet('navigation', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg')
+            .iconSet('image', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-image.svg');
 
         //this overrides the defaults actiosn for all $resources
         angular.extend($resourceProvider.defaults.actions, {
