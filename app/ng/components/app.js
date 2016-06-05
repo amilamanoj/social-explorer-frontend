@@ -28,7 +28,7 @@ var app = angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile
             .iconSet('maps', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-maps.svg')
             .iconSet('navigation', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg')
             .iconSet('image', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-image.svg')
-        .iconSet('image', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-editor.svg');
+        .iconSet('editor', 'libs/material-design-icons/sprites/svg-sprite/svg-sprite-editor.svg');
 
 
         //this overrides the defaults actiosn for all $resources
