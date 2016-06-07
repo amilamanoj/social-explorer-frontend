@@ -3,7 +3,7 @@
     <ul rn-carousel rn-carousel-auto-slide rn-carousel-transition="slide"
         class="carousel3" style="height:800px; width:800px">
         <li ng-repeat="project in projects">
-            <div class="layer">{{ project.title }}</div>
+            <h2><div class="layer">{{ project.title }}</div></h2>
             <div class="layer"><img data-ng-src="data:image/png;base64,{{project.img}}" /></div>
             <!--<div ng-style="{'background-image': 'url(data:image/png;base64,{{project.img}})'}"  class="layer">-->
                 <!--#{{ project.id }}-->
