@@ -68,5 +68,10 @@ angular.module('myApp.profile')
             });
         };
 
+        $scope.edit = function (ev, proj){
+
+            $state.go('profile.editproj',{project: proj});
+        }
+
     });
 

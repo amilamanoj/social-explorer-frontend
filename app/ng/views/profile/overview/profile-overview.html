@@ -16,7 +16,9 @@
                     <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
                 </md-button>
 
-                <md-button class="md-secondary" ng-click="edit($event, project)" style="padding-bottom: 24px; margin-right:60px" >
+               <!-- <md-button class="md-secondary" ng-click="edit($event, project)" style="padding-bottom: 24px; margin-right:60px" >-->
+                    <md-button class="md-secondary" ui-sref="profile.editproj({projectId: project._id })" style="padding-bottom: 24px; margin-right:60px" >
+
                     <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
                 </md-button>
 

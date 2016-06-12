@@ -2,7 +2,7 @@ angular.module('myApp.profile', ['ngResource', 'ui.router'])
     // .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
     // })
 
-.config(function ($stateProvider, $urlRouterProvider, profileOverviewState,profileCreateProjState) {
+.config(function ($stateProvider, $urlRouterProvider, profileOverviewState,profileCreateProjState, profileEditProjState) {
     $stateProvider
 
         .state('profile', {
@@ -54,7 +54,10 @@ angular.module('myApp.profile', ['ngResource', 'ui.router'])
         // So you have a new state 'list' within the parent 'home' state.
         .state(profileOverviewState.name, profileOverviewState.options)
 
-        .state(profileCreateProjState.name, profileCreateProjState.options);
+        .state(profileCreateProjState.name, profileCreateProjState.options)
+
+        .state(profileEditProjState.name, profileEditProjState.options);
+
 
 });
 
