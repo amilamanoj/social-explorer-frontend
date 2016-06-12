@@ -50,6 +50,10 @@ angular.module('myApp.projects')
             $scope.mayDelete = $scope.project.user && $scope.project.user == currUser.getUser()._id;
         });
 
+        $scope.project.$promise.then(function(){
+            $scope.canApply = $scope.project.user && $scope.project.user != currUser.getUser()._id;
+        });
+
         $scope.$watch(function(){
             return currUser.loggedIn();
         }, function(loggedIn){
