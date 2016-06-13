@@ -58,13 +58,14 @@
         </md-button>
 
         <!-- IF own project, then one can edit it-->
-        <md-button class=" md-raised" ng-click="applyForProject($event)" ng-if="!canApply">
-            <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
-            Edit
-        </md-button>
-    </div>
+             <md-button class=" md-raised" ui-sref="profile.editproj({projectId: project._id })"  ng-if="!canApply">
+
+             <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
+             Edit
+         </md-button>
+     </div>
 
 
-</div>
+ </div>
 
 
