@@ -8,16 +8,18 @@
 
 
 
-        <div class="md-display-1 md-primary md-accent"><strong>Country:</strong> {{project.country}} <strong>City:</strong> {{project.city}}</div>
+        <div layout="row" layout-align="center center"class="md-display-1 md-primary md-accent"><strong>Country:&nbsp; </strong> {{project.country}} </div>
 
-        <div class="md-display-1 md-primary md-accent"><strong>From</strong> {{project.fromDate}} <strong>to</strong> {{project.toDate}}</div>
+        <div layout="row" layout-align="center center"class="md-display-1 md-primary md-accent"><strong>City:&nbsp; </strong> {{project.city}}</div>
 
-        <div class="md-display-1 md-primary md-accent"><strong>Describtion:</strong> {{project.description}}</div>
+        <div layout="row" layout-align="center center"class="md-display-1 md-primary md-accent"><strong>From&nbsp;</strong> {{project.fromDate}}&nbsp; <strong>to&nbsp;</strong> {{project.toDate}}</div>
 
-        <div class="md-display-1 md-primary md-accent"><strong>Objective:</strong> {{project.objective}}</div>
+        <div layout="row" layout-align="center center"class="md-display-1 md-primary md-accent"><strong>Description:&nbsp;</strong> {{project.description}}</div>
+
+        <div layout="row" layout-align="center center"class="md-display-1 md-primary md-accent"><strong>Objective:&nbsp;</strong> {{project.objective}}</div>
 
         <!-- TODO, Rating-->
-        <p> Rating: {{project.mpaa_rating}} </p>
+        <p layout="row" layout-align="center center"> Rating: {{project.mpaa_rating}} </p>
 
 
                 <!--
@@ -52,11 +54,12 @@
 
              <!-- TODO, function applyForProject (here application is only possible when it is not the own project) -->
 
-        <md-button class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply">
-            <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
-            Ask for participtaion
-        </md-button>
 
+        <p layout="row" layout-align="center center">
+            <md-button layout="column" layout-align="space-around center" class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply">
+                <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
+                Ask to participate!
+            </md-button>        </p>
         <!-- IF own project, then one can edit it-->
              <md-button class=" md-raised" ui-sref="profile.editproj({projectId: project._id })"  ng-if="!canApply">
 
