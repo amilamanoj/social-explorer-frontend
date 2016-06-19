@@ -1,28 +1,39 @@
-<div class="md-toolbar-tools">
-    <div ncy-breadcrumb class="ui-breadcrumbs md-title">
-    </div>
-    <span flex></span>
+<md-toolbar layout="row" layout-align="center center" class="md-tall" style="background-color: white;">
+
+    <img src="logo_updated.png" width="240" height="120"/>
+    <img ng-src="{{image}}"/>
+
+</md-toolbar>
+
+<md-toolbar ng-if="!loggedIn" layout="row" layout-align="space-between center">
 
     <!-- not logged in -->
-    <span class="md-body-2" hide-xs ng-if="!loggedIn">You are currently not logged in.</span>
+    <!--The left side-->
+    <span> <h2 ng-if="!loggedIn" class="md-toolbar-tools"> See what Social Explorers accomplished! </h2></span>
 
-    <md-button ng-if="!loggedIn" ng-click="showLoginDialog()">
-        Log in
-    </md-button>
-    <md-button ng-if="!loggedIn" ng-click="showSignupDialog()">
-        Sign Up
-    </md-button>
+    <span flex></span>
 
+    <!--The right side-->
+    <span>
+        <md-button ng-if="!loggedIn" ng-click="showLoginDialog()" aria-label="Log in"> Log in </md-button>
+        <md-button ng-if="!loggedIn" ng-click="showSignupDialog()" aria-label="Sign up"> Sign up </md-button>
+    </span>
 
-    <!-- logged in -->
-    <span class="md-body-2" ng-if="loggedIn">Hello, {{user.username}}</span>
+</md-toolbar>
 
-    <md-button ng-if="loggedIn" ng-click="goToProfile()">
-        My Profile
-    </md-button>
-    <md-button ng-if="loggedIn" ng-click="logout()">
-        Log out
-    </md-button>
+<md-toolbar ng-if="loggedIn" layout="row" layout-align="space-between center">
 
+<!-- logged in -->
+<!--The left side-->
+<span> <md-button ng-if="loggedIn" ng-click="goToProfile()" aria-label="Find, go and help!"> Find, go and help! </md-button></span>
 
-</div>
+<span flex></span>
+
+<!--The right side-->
+<span>
+    <md-button ng-if="loggedIn" ng-click="goToProfile()" aria-label="My profile"> My profile </md-button>
+    <md-button ng-if="loggedIn" ng-click="logout()" aria-label="Log out"> Log out </md-button>
+    </span>
+
+</md-toolbar>
+

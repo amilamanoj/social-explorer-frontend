@@ -44,6 +44,15 @@ angular.module('myApp')
                         fullscreen: useFullScreen
                     });
                 };
+                function showProjectsPageForLoggedInUsers(){
+                    var useFullScreen = $mdMedia('xs');
+                    $mdDialog.show({
+                        controller: 'register',
+                        templateUrl: 'components/register-dialog/register-dialog.html',
+                        clickOutsideToClose:true,
+                        fullscreen: useFullScreen
+                    });
+                };
 
                 function logout(){
                     currUser.logout();
