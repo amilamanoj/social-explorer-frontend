@@ -1,11 +1,10 @@
-<div flex layout="column" style="height:700px;" ng-cloak>
-
-    <p layout="column" layout-align="space-around start">
-        <h1>&nbsp Overview</h1>
-    </p>
+<div layout="column" style="height:650px;" ng-cloak>
 
     <md-list>
-        <md-subheader class="md-no-sticky">My projects</md-subheader>
+
+        <md-toolbar class="md-accent md-hue-2">
+            <h1  layout-align="center center" class="md-toolbar-tools">Projects created by you </h1>
+        </md-toolbar>
 
         <md-list-item class="md-3-line" ng-repeat="project in projects | filter: userFilter" ng-click="null" >
 
