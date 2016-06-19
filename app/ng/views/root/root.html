@@ -5,12 +5,21 @@
 
 <md-toolbar class="md-primary" mv-toolbar style="border-style:none"></md-toolbar>
 
-<h1 class="md-subhead"><md-content layout-padding>
-    Travel, help and connect. Be a Social Explorer and make lives better.
-    <md-button>{{"Learn more..."}}</md-button>
-</md-content></h1>
+<div flex>
 
-<md-content role="main" class="mv-content" layout-padding ui-view="content"></md-content>
+
+    <md-content flex="" layout-padding="">
+
+
+        <p>Travel, help and connect. Be a Social Explorer and make lives better.
+            <md-button>{{"Learn more..."}}</md-button>
+        </p>
+
+
+    <role="main" class="mv-content" layout-padding ui-view="content">
+    </md-content>
+
+</div>
 
 <!--stuff that belongs outside of the md-content container like fab buttons-->
 <div ui-view="outside"></div>
