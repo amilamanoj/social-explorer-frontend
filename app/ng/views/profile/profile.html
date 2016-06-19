@@ -1,27 +1,28 @@
 <div layout="column" style="height:700px;" ng-cloak>
-<section layout="row" flex="">
 
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true"  md-whiteframe="4">
+    <section layout="row" flex="">
 
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Hello, {{user.username}}</h1>
-        </md-toolbar>
-        <md-content layout-padding="5">
-            <p>Username: {{user.username}}</p>
-            <p>Email: {{user.email}}</p>
-            <p>
-                Your rating:
-            </p>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true"  md-whiteframe="4">
+
+            <md-toolbar class="md-theme-indigo">
+                <h1 class="md-toolbar-tools">Hello, {{user.username}}!</h1>
+            </md-toolbar>
+
+            <md-content layout-padding="5">
+                <p>Username: {{user.username}}</p>
+                <p>Email: {{user.email}}</p>
+                <p>Project applications: </p>
+                <p>Host reviews: </p>
+                <p>Project reviews: </p>
+                <p>Review reminders: </p>
+            </md-content>
+
+        </md-sidenav>
+
+        <md-content role="main"  ui-view="content">
+
         </md-content>
 
-    </md-sidenav>
 
-    <md-content role="main"  ui-view="content">
-
-
-
-    </md-content>
-
-
-</section>
+    </section>
 </div>
