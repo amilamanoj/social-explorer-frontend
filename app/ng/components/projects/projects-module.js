@@ -11,7 +11,7 @@ angular.module('myApp.projects', ['ngResource', 'ui.router'])
             parent: 'root',
 
             // This abstract state will prepend '/projects' onto the urls of all its children.
-            url: '/projects'
+            url: '/home'
 
             // since we have views we do not need to define a template here
             //template: '<div ui-view></div>',

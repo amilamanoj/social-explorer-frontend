@@ -7,7 +7,7 @@ var app = angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile
     .config(function($stateProvider, $urlRouterProvider, $mdIconProvider, $resourceProvider, $httpProvider, $breadcrumbProvider, $mdThemingProvider) {
 
         // For any unmatched url, redirect to /projects
-        $urlRouterProvider.otherwise("/projects");
+        $urlRouterProvider.otherwise("/home");
 
 
         $stateProvider
@@ -67,12 +67,22 @@ app.run(function ($rootScope, $state, $location, auth) {
         // NOT authenticated - redrect to home
         if(shouldLogin)
         {
+            event.preventDefault();
             console.log("Not logged in, redirecting to home");
             $state.go('projects.list');
-            event.preventDefault();
             return;
         }
 
+        if (!angular.isFunction(to.data.rule)) return;
+        var result = to.data.rule($currentUser);
+
+        if (result && result.to) {
+            e.preventDefault();
+            // Optionally set option.notify to false if you don't want 
+            // to retrigger another $stateChangeStart event
+            $state.go(result.to, result.params, {notify: false});
+        }
+    
         // unmanaged
     });
 });
