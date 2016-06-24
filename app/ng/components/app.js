@@ -73,8 +73,8 @@ app.run(function ($rootScope, $state, $location, auth) {
             return;
         }
 
-        if (!angular.isFunction(to.data.rule)) return;
-        var result = to.data.rule($currentUser);
+        if (!angular.isFunction(toState.data.rule)) return;
+        var result = toState.data.rule($currentUser);
 
         if (result && result.to) {
             e.preventDefault();
