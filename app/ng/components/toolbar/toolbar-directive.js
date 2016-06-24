@@ -6,6 +6,7 @@ angular.module('myApp')
             controller: function($scope, currUser, $mdDialog, $mdMedia, $mdToast, $state) {
 
                 $scope.user = null;
+                $scope.host = false;
 
 
                 $scope.showLoginDialog = showLoginDialog;
@@ -68,7 +69,7 @@ angular.module('myApp')
 
                 function goToSearch(){
                     console.log("going to search");
-                    $state.go('search.overview')
+                    $state.go('projects.search')
                 }
 
 
