@@ -10,6 +10,7 @@
         this.loggedIn = auth.isAuthed;
         this.logout = auth.deleteToken;
         this.getUser = getUser;
+        this.getRole = getRole;
 
 
         ////////////////
@@ -32,6 +33,11 @@
         function getUser() {
             var token = auth.getToken();
             return token? auth.parseJwt(token).user : {};
+        }
+        
+        function getRole() {
+            var token = auth.getToken();
+            return token? auth.parseJwt(token).role : {};
         }
     }
 
