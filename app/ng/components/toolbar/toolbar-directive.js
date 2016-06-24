@@ -12,6 +12,8 @@ angular.module('myApp')
                 $scope.showSignupDialog = showSignupDialog;
                 $scope.logout = logout;
                 $scope.goToProfile = goToProfile;
+                $scope.goToSearch = goToSearch;
+
 
                 $scope.$watch(function(){
                     return currUser.loggedIn();
@@ -63,6 +65,12 @@ angular.module('myApp')
                     console.log("going to profile");
                     $state.go('profile.overview')
                 }
+
+                function goToSearch(){
+                    console.log("going to search");
+                    $state.go('search.overview')
+                }
+
 
                 function showSimpleToast(txt){
                     $mdToast.show(
