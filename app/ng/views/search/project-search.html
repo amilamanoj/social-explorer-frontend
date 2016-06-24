@@ -12,7 +12,8 @@
         </md-sidenav>
 
         <md-list flex="60">
-            <md-list-item class="md-3-line animate-repeat" ng-repeat="project in projects | filter:$ctrl.query" ng-click="null">
+            <md-list-item class="md-3-line animate-repeat" ng-repeat="project in projects | filter:$ctrl.query"
+                          ng-click="goToProject(project)">
 
                 <img data-ng-src="data:image/png;base64,{{project.img}}" class="md-avatar"/>
 

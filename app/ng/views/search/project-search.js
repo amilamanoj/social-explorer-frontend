@@ -28,12 +28,17 @@ angular.module('myApp.projects')
 
     })
 
-    .controller('ProjectSearchCtrl', function($scope, Project) {
+    .controller('ProjectSearchCtrl', function($scope, $state, Project) {
         $scope.projects = Project.query();
+        $scope.goToProject = goToProject;
 
         $scope.$on('projectCreated', function(ev, project){
             $scope.projects.push(project);
         });
 
+        function goToProject(proj){
+            console.log("going to project");
+            $state.go('projects.detail', {'projectId': proj._id });
+        }
 
     });
