@@ -38,16 +38,17 @@ angular.module('myApp.profile')
 
     .controller('ProfileEditProjCtrl', function($state, $scope, $rootScope, $mdToast, $stateParams, Project, currUser) {
 
-     //   $scope.saveProject = saveProject;
+        $scope.updateProject = updateProject;
         $scope.cancel = cancel;
         //var project= $stateParams;
         //console.log("hello", project);
         $scope.project = Project.get({projectId: $stateParams.projectId});
-        
 
-        /*function saveProject(){
+        console.log( $stateParams.projectId)
+        function updateProject(){
           console.log("edit project");
             $scope.newProject = new Project();
+            $scope.newProject._id = $stateParams.projectId;
             $scope.newProject.user = currUser.getUser()._id;
             $scope.newProject.title = this.project.title;
             $scope.newProject.country = this.project.country;
@@ -56,21 +57,26 @@ angular.module('myApp.profile')
             $scope.newProject.description = this.project.description;
             $scope.newProject.fromDate = this.project.fromDate;
             $scope.newProject.toDate = this.project.toDate;
-            $scope.newProject.img = this.project.image.base64;
+
+            console.log($scope.newProject.fromDate);
+            if (this.project.image!= undefined) {
+                $scope.newProject.img = this.project.image.base64;
+            }
 
             console.log($scope.newProject);
 
-            $scope.newProject.$save()
+
+            $scope.newProject.$update()
                 .then(function(){
-                    $rootScope.$broadcast('projectCreated', $scope.newProject);
+                    $rootScope.$broadcast('projectUpdate', $scope.newProject);
                     $state.go('profile.overview');
-                    showSimpleToast("Project created!")
+                    showSimpleToast("Project updated!")
                 }).catch(function(e){
                 console.log("error: " + e);
                 showSimpleToast("Project creation failed: " + e);
 
             });
-        } */
+        }
 
         function cancel(){
             $state.go('profile.overview')
@@ -88,4 +94,7 @@ angular.module('myApp.profile')
 
 
     });
+
+
+
 
