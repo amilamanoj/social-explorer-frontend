@@ -36,7 +36,7 @@ angular.module('myApp.projects')
 
         }
     })
-    .controller('ProjectDetailCtrl', function($scope, Project, $mdToast, $mdDialog, $stateParams, $state, currUser) {
+    .controller('ProjectDetailCtrl', function($scope, Project, Application, $mdToast, $mdDialog, $stateParams, $state, currUser) {
 
         $scope.project = Project.get({projectId: $stateParams.projectId});
 
@@ -81,10 +81,35 @@ angular.module('myApp.projects')
                 .cancel('Cancel');
             $mdDialog.show(confirm).then(function(result) {
                 $scope.status = 'You applied with statement ' + result + '.';
+                sendApplication(result);
             }, function() {
-                $scope.status = 'You cancled.';
+                $scope.status = 'You canceled.';
             });
         };
+
+        function sendApplication(statement){
+            console.log("create application");
+            $scope.newApplication = new Application();
+            $scope.newApplication.applicant = currUser.getUser()._id;
+            $scope.newApplication.user = currUser.getUser()._id;
+            $scope.newApplication.host = $scope.project.user;
+            $scope.newApplication.project = $scope.project._id;
+            $scope.newApplication.createdDate = new Date();
+            $scope.newApplication.statement = statement;
+
+            console.log($scope.newApplication);
+
+            $scope.newApplication.$save()
+                .then(function(){
+                    // $rootScope.$broadcast('applicationCreated', $scope.newApplication);
+                    $state.go('profile.overview');
+                    showSimpleToast("Application sent!")
+                }).catch(function(e){
+                console.log("error: " + e);
+                showSimpleToast("Application sending failed: " + e);
+
+            });
+        }
 
 
         function updateProject(changed) {
