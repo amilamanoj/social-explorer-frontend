@@ -14,6 +14,7 @@ angular.module('myApp')
                 $scope.logout = logout;
                 $scope.goToProfile = goToProfile;
                 $scope.goToSearch = goToSearch;
+                $scope.goToHome = goToHome;
 
 
                 $scope.$watch(function(){
@@ -59,6 +60,11 @@ angular.module('myApp')
 
                 function logout(){
                     currUser.logout();
+                    $state.go('projects.list')
+                }
+
+                function goToHome(){
+                    console.log("going to home");
                     $state.go('projects.list')
                 }
 
