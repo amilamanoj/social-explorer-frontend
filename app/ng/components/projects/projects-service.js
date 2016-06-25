@@ -2,8 +2,8 @@
 
 angular.module('myApp.projects')
 
-    .factory('Project', function( $resource) {
+    .factory('Project', function(BASEURL, $resource) {
         console.log("Calling backend...");
-        return $resource('https://soexb.herokuapp.com/api/projects/:projectId', {projectId: '@_id'});
+        return $resource(BASEURL + '/api/projects/:projectId', {projectId: '@_id'});
 
     });
