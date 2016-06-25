@@ -73,15 +73,15 @@ app.run(function ($rootScope, $state, $location, auth) {
             return;
         }
 
-        if (!angular.isFunction(toState.data.rule)) return;
-        var result = toState.data.rule($currentUser);
-
-        if (result && result.to) {
-            e.preventDefault();
-            // Optionally set option.notify to false if you don't want 
-            // to retrigger another $stateChangeStart event
-            $state.go(result.to, result.params, {notify: false});
-        }
+        // if (!angular.isFunction(toState.data.rule)) return;
+        // var result = toState.data.rule($currentUser);
+        //
+        // if (result && result.to) {
+        //     e.preventDefault();
+        //     // Optionally set option.notify to false if you don't want
+        //     // to retrigger another $stateChangeStart event
+        //     $state.go(result.to, result.params, {notify: false});
+        // }
     
         // unmanaged
     });
