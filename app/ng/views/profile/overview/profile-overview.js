@@ -33,9 +33,11 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileOverviewCtrl', function($scope, $state, $mdDialog, currUser, Project) {
+    .controller('ProfileOverviewCtrl', function($scope, $state, Profile, $mdDialog, currUser, Project) {
         $scope.projects = Project.query();
-
+        
+        $scope.user=Profile.get({userId:currUser.getUser()._id});
+        
         $scope.goToCreateProject = goToCreateProject;
 
         function goToCreateProject(){
