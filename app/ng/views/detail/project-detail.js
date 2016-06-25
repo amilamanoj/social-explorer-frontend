@@ -68,6 +68,24 @@ angular.module('myApp.projects')
 
         ////////////////////
 
+        $scope.applyForProject = function(ev) {
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.prompt()
+                .title('Participate in the project')
+                .textContent('Let the organizer know why do you want to participate in this event, in one sentence')
+                .placeholder('statement')
+                .ariaLabel('statement')
+                // .initialValue('your text there')
+                .targetEvent(ev)
+                .ok('Apply!')
+                .cancel('Cancel');
+            $mdDialog.show(confirm).then(function(result) {
+                $scope.status = 'You applied with statement ' + result + '.';
+            }, function() {
+                $scope.status = 'You cancled.';
+            });
+        };
+
 
         function updateProject(changed) {
 
