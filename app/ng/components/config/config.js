@@ -1,2 +1,2 @@
 angular.module('myApp')
-    .constant("BASEURL", "http://localhost:3000");
+    .constant("BASEURL", "https://soexb.herokuapp.com");
