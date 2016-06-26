@@ -36,9 +36,11 @@ angular.module('myApp.projects')
 
         }
     })
-    .controller('ProjectDetailCtrl', function($scope, Project, Application, $mdToast, $mdDialog, $stateParams, $state, currUser) {
+    .controller('ProjectDetailCtrl', function($scope, Profile, Project, Application, $mdToast, $mdDialog, $stateParams, $state, currUser) {
 
         $scope.project = Project.get({projectId: $stateParams.projectId});
+
+       //$scope.user=Profile.get({userId:$scope.project.user}); Does work, I don´t konw why??
 
         $scope.mayDelete;
         $scope.mayEdit = currUser.loggedIn();
