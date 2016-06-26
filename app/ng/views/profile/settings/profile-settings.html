@@ -1,0 +1,23 @@
+<div layout="column" style="height:650px;" ng-cloak>
+
+    <md-toolbar class="md-accent md-hue-2">
+        <h1  layout-align="center center" class="md-toolbar-tools">Your Settings</h1>
+    </md-toolbar>
+
+
+    <md-content layout-padding="5">
+        <p>Username: {{user.username}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Age: {{user.age}}</p>
+        <p>Country: {{user.country}}</p>
+        <p>City: {{user.city}}</p>
+
+    </md-content>
+
+    <md-button class=" md-raised" ui-sref="profile.editprofile({userId: user._id })" >
+
+        <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
+        Edit
+    </md-button>
+
+    </div>
