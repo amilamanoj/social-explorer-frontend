@@ -36,6 +36,12 @@
             <input  ng-model="user.city" >
         </md-input-container>
 
+        <!-- <md-input-container class="md-block">
+
+            <label>About Me</label>
+            <input  ng-model="user.about_me" >
+        </md-input-container> -->
+
 
         <md-input-container class="md-block" style="margin-bottom:30px">
             <label>Change profile image</label>
@@ -49,10 +55,9 @@
     </md-content>
 
 
-    <md-button class=" md-raised" ui-sref="profile.editprofile({userId: user._id })" >
+    <md-button class=" md-raised" ng-click="updateUser()" >
 
         <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
         Update Profile Information
     </md-button>
-
-    </div>
+</div>

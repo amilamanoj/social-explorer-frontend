@@ -30,17 +30,61 @@ angular.module('myApp.profile')
         }
 
     })
-    // .controller('ProfileSettingsCtrl', function($scope, $state, Profile, currUser) {
-    //
-    //     $scope.loading = true;
-    //     $scope.projects = Project.query(function() {
-    //         $scope.loading = false;
-    //     });
-    //
-    //
-    //     $scope.edit = function (ev, currUser){
-    //
-    //         $state.go('profile.editprofile',{user: currUser});
-    //     }
-    //
-    // });
+     .controller('ProfileSettingsCtrl', function($scope, $state, Profile, currUser, $rootScope, $mdToast) {
+
+         $scope.updateUser = updateUser;
+         $scope.cancel = cancel;
+
+         $scope.user=Profile.get({userId:currUser.getUser()._id});
+         console.log("iam here");
+
+
+         function updateUser(){
+             console.log("edit user");
+             $scope.newUser = new Profile();
+             $scope.newUser._id = this.user._id;
+             $scope.newUser.username = this.user.username;
+             $scope.newUser.email = this.user.email;
+             $scope.newUser.age = this.user.age;
+             $scope.newUser.country = this.user.country;
+             $scope.newUser.city = this.user.city;  
+
+
+             if (this.user.image!= undefined) {
+                 $scope.newUser.img = this.user.image.base64;
+             }
+
+             console.log($scope.newUser);
+
+
+             $scope.newUser.$update()
+                 .then(function(){
+                     $rootScope.$broadcast('profileUpdate', $scope.newUser);
+                     $state.go('profile.settings');
+                     showSimpleToast("Profile updated!")
+                 }).catch(function(e){
+                 console.log("error: " + e);
+                 showSimpleToast("User update failed: " + e);
+
+             });
+         }
+
+
+         function cancel(){
+             $state.go('profile.settings')
+         }
+
+
+
+         function showSimpleToast(txt){
+             $mdToast.show(
+                 $mdToast.simple()
+                     .textContent(txt)
+                     .position('bottom right')
+                     .hideDelay(3000)
+
+             );
+         }
+
+
+     });
