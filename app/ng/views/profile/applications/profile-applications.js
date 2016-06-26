@@ -33,33 +33,32 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileApplicationsCtrl', function($scope, $state, Profile, $mdDialog, currUser, Application) {
+    .controller('ProfileApplicationsCtrl', function($scope, $state, Profile, Project, $mdDialog, currUser, Application) {
    
         $scope.loading = true;
-        $scope.applications = Application.query(function() {
+        $scope.applications = Application.query({applicant:currUser.getUser()._id}, function() {
             $scope.loading = false;
+            var varIndex;
+
+            for (varIndex = 0; varIndex < $scope.applications.length; ++varIndex) {
+                var appl =  $scope.applications[varIndex];
+                    var proj = Project.get({projectId:appl.project}, function ()  {
+                        appl.pTitle = proj.title;
+                    });
+            
+            }
         });
 
         $scope.user=Profile.get({userId:currUser.getUser()._id});
 
-
-        $scope.userFilter = function (application) {
-            var appliedUser = application.applicant;
-            var loggedInUser = currUser.getUser();
-            if (appliedUser && loggedInUser) {
-                return appliedUser === loggedInUser._id;
-            } else {
-                return false;
-            }
-        };
         
         $scope.confirmAndDelete = function(ev, application) {
             var confirm = $mdDialog.confirm()
                 .title("Delete the application?")
-                .textContent('Your application: "' + application.title + '" will be deleted.')
+                .textContent('Your application to: "' + application.pTitle + '" will be withdrawn.')
                 .ariaLabel('Delete?')
                 .targetEvent(ev)
-                .ok('Delete application')
+                .ok('Withdraw application')
                 .cancel('Cancel');
             $mdDialog.show(confirm).then(function() {
                 application.$delete();
