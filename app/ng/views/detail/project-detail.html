@@ -30,15 +30,15 @@
                 <md-card-title>
                     <md-card-title-text>
                         <span >About the Host</span>
-                        <span class="md-headline">Username{{user.username}}</span> <!--Now it´s always the logged in username-->
+                        <span class="md-headline">User: {{user.username}}</span> <!--Now it´s always the logged in username-->
                         <span class="md-subhead">E-Mail: {{user.email}}</span>
                     </md-card-title-text>
                     <md-card-title-media >
-                        <div class="md-media-sm card-media"><img data-ng-src="data:image/png;base64,{{profile.img}}"/>Profile Imgage</div>
+                        <div class="md-media-sm card-media"><img data-ng-src="data:image/png;base64,{{profile.img}}"/>Profile Image</div>
                     </md-card-title-media>
                 </md-card-title>
-                <md-card-actions layout="row" layout-align="end center">
-                    <md-button>Look to the Pofile</md-button>
+                <md-card-actions layout="row" layout-align="end center" ng-click="lookAtProfile($event)">
+                    <md-button>Look at the Profile</md-button>
                 </md-card-actions>
             </md-card>
 

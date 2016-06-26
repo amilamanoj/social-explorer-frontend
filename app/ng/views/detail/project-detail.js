@@ -89,6 +89,28 @@ angular.module('myApp.projects')
             });
         };
 
+        $scope.lookAtProfile = function(ev, user) { //just a preview example for a pop up window
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.prompt()
+                .title('Profile of host:')
+                .textContent('Name: ')
+
+                // .textContent('Name: "' + user.username + '"')
+                .placeholder('statement')
+                .ariaLabel('statement')
+                // .initialValue('your text there')
+                .targetEvent(ev)
+                .ok('Apply!')
+                 .cancel('Back');
+            $mdDialog.show(confirm).then(function(result) {
+                $scope.status = 'You applied with statement ' + result + '.';
+                sendApplication(result);
+            },
+                function() {
+                $scope.status = 'You canceled.';
+            });
+        };
+
         function sendApplication(statement){
             console.log("create application");
             $scope.newApplication = new Application();
