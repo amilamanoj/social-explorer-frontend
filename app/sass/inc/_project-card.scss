@@ -4,3 +4,21 @@
     width:62px;
   }
 }
+
+.bgimage {
+  text-align:center;
+  color:white;
+  background-size:cover;
+  height: 100%;
+  background-position: center center;
+}
+
+ul[rn-carousel] {
+  width:800px;
+  height:600px;
+  margin: 0 auto;
+}
+
+.carousel-caption {
+  text-shadow: 2px 2px #000000;
+}

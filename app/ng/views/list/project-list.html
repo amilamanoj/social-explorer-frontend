@@ -1,19 +1,17 @@
 <div layout="row" layout-wrap>
     <!--<md-card mv-project-card class="mv-card" project="project" ng-repeat="project in projects"></md-card>-->
-    <ul rn-carousel rn-carousel-auto-slide rn-carousel-transition="slide"
-        class="carousel3" style="height:800px; width:800px">
+    <ul rn-carousel rn-carousel-controls rn-carousel-index="carouselIndex" rn-carousel-auto-slide="" class="carousel1" >
 
-        <li ng-repeat="project in projects">
+        <li ng-repeat="project in projects" ui-sref="projects.detail({projectId: project._id })">
 
-            <h2><div layout="row" layout-align="center center" class="layer">{{ project.title }}</div></h2>
+            <div ng-style="{'background-image': 'url(data:image/png;base64,{{project.img}})'}" class="bgimage">
+                <div class="carousel-caption">
+                    <h2>{{ project.title }}</h2>
+                </div>
+            </div>
 
-            <md-button class="md-ink-ripple md-accent" ui-sref="projects.detail({projectId: project._id })">
-                <div class="layer"><img data-ng-src="data:image/png;base64,{{project.img}}" /></div>
-            </md-button>
-            <!--<div ng-style="{'background-image': 'url(data:image/png;base64,{{project.img}})'}"  class="layer">-->
-                <!--#{{ project.id }}-->
-            <!--</div>-->
         </li>
+
     </ul>
 </div>
 
