@@ -2,7 +2,9 @@ angular.module('myApp.profile', ['ngResource', 'ui.router'])
     // .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
     // })
 
-.config(function ($stateProvider, $urlRouterProvider, profileOverviewState,profileCreateProjState, profileEditProjState) {
+.config(function ($stateProvider, $urlRouterProvider, profileOverviewState,
+                  profileCreateProjState, profileEditProjState, profileApplicationsState) {
+    
     $stateProvider
 
         .state('profile', {
@@ -56,7 +58,9 @@ angular.module('myApp.profile', ['ngResource', 'ui.router'])
 
         .state(profileCreateProjState.name, profileCreateProjState.options)
 
-        .state(profileEditProjState.name, profileEditProjState.options);
+        .state(profileEditProjState.name, profileEditProjState.options)
+    
+        .state(profileApplicationsState.name, profileApplicationsState.options);
 
 
 });
