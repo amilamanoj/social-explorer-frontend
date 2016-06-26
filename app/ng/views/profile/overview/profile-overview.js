@@ -33,12 +33,14 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileOverviewCtrl', function($scope, $state, $mdDialog, currUser, Project) {
+    .controller('ProfileOverviewCtrl', function($scope, $state, Profile, $mdDialog, currUser, Project) {
    
         $scope.loading = true;
         $scope.projects = Project.query(function() {
             $scope.loading = false;
         });
+
+        $scope.user=Profile.get({userId:currUser.getUser()._id});
 
         $scope.goToCreateProject = goToCreateProject;
 
