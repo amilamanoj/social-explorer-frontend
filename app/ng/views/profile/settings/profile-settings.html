@@ -7,18 +7,52 @@
     <img id="mySpinner" src="ripple.gif" ng-show="loading" />
 
     <md-content layout-padding="5">
-        <p>Username: {{user.username}}</p>
-        <p>Email: {{user.email}}</p>
-        <p>Age: {{user.age}}</p>
-        <p>Country: {{user.country}}</p>
-        <p>City: {{user.city}}</p>
+    <md-input-container class="md-block">
+        <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
+        <label>Username</label>
+        <input required name="userName" ng-model="user.username" ng-init="user.username">
+    </md-input-container>
+        <md-input-container class="md-block">
+            <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
+            <label>Email</label>
+            <input required name="userName" ng-model="user.email" ng-init="user.email">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
+            <label>Age</label>
+            <input  ng-model="user.age" >
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
+            <label>Country</label>
+            <input  ng-model="user.country" >
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
+            <label>City</label>
+            <input  ng-model="user.city" >
+        </md-input-container>
+
+
+        <md-input-container class="md-block" style="margin-bottom:30px">
+            <label>Change profile image</label>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <input type="file" ng-model="user.image" name="image" accept="image/*" maxsize="500" required base-sixty-four-input>
+            <span ng-show="form.files.$error.maxsize">Files must not exceed 500 KB</span>
+        </md-input-container>
+
 
     </md-content>
+
 
     <md-button class=" md-raised" ui-sref="profile.editprofile({userId: user._id })" >
 
         <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
-        Edit
+        Update Profile Information
     </md-button>
 
     </div>
