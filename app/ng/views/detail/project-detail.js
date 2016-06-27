@@ -40,8 +40,6 @@ angular.module('myApp.projects')
 
         $scope.project = Project.get({projectId: $stateParams.projectId});
 
-        console.log($scope.project.user);
-        $scope.user=Profile.get({userId:$scope.project.user});
 
         $scope.mayDelete;
         $scope.mayEdit = currUser.loggedIn();
@@ -51,11 +49,13 @@ angular.module('myApp.projects')
 
         $scope.project.$promise.then(function(){
             $scope.mayDelete = $scope.project.user && $scope.project.user == currUser.getUser()._id;
+            $scope.canApply = $scope.project.user && $scope.project.user != currUser.getUser()._id;
+            Profile.get({userId: $scope.project.user}, function (pUser) {
+                $scope.projectUser = pUser;
+            });
         });
 
-        $scope.project.$promise.then(function(){
-            $scope.canApply = $scope.project.user && $scope.project.user != currUser.getUser()._id;
-        });
+
 
         $scope.$watch(function(){
             return currUser.loggedIn();
