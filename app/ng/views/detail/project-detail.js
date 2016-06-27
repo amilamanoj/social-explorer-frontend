@@ -40,7 +40,9 @@ angular.module('myApp.projects')
 
         $scope.project = Project.get({projectId: $stateParams.projectId});
 
-        $scope.user=Profile.get({userId:currUser.getUser()._id});
+        console.log($scope.project.user);
+        $scope.user=Profile.get({userId:$scope.project.user});
+
         $scope.mayDelete;
         $scope.mayEdit = currUser.loggedIn();
         $scope.deleteProject = deleteProject;
