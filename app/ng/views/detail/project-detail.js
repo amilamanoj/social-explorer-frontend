@@ -125,6 +125,7 @@ angular.module('myApp.projects')
                     clickOutsideToClose:true
 
                 })
+               
                 .then(function(answer) {
                     $scope.status = 'You said the information was "' + answer + '".';
                 }, function() {
@@ -199,6 +200,9 @@ angular.module('myApp.projects')
                 showSimpleToast("delete aborted");
             })
         }
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
 
         function showSimpleToast(txt) {
             $mdToast.show(
