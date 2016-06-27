@@ -1,6 +1,13 @@
-<div layout="row" layout-wrap>
+<div layout="column" layout-wrap  layout-align="center center">
     <!--<md-card mv-project-card class="mv-card" project="project" ng-repeat="project in projects"></md-card>-->
-    <ul rn-carousel rn-carousel-controls rn-carousel-index="carouselIndex" rn-carousel-auto-slide="" class="carousel1" >
+    <p ng-if="!loggedIn" flex>
+        Travel, help and connect.
+        <br>
+        Be a Social Explorer and make lives better.
+        <md-button>{{"Learn more..."}}</md-button>
+    </p>
+
+    <ul rn-carousel flex rn-carousel-controls rn-carousel-index="carouselIndex" rn-carousel-auto-slide="" class="carousel1" >
 
         <li ng-repeat="project in projects" ui-sref="projects.detail({projectId: project._id })">
 
