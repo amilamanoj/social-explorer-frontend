@@ -36,12 +36,11 @@ angular.module('myApp.projects')
 
         }
     })
-    .controller('ProjectDetailCtrl', function($scope, Profile, Project, Application, $mdToast, $mdDialog, $stateParams, $state, currUser) {
+    .controller('ProjectDetailCtrl', function($scope, Profile, Project, Application,$mdMedia, $mdToast, $mdDialog, $stateParams, $state, currUser) {
 
         $scope.project = Project.get({projectId: $stateParams.projectId});
 
-       //$scope.user=Profile.get({userId:$scope.project.user}); Does work, I don´t konw why??
-
+        $scope.user=Profile.get({userId:currUser.getUser()._id});
         $scope.mayDelete;
         $scope.mayEdit = currUser.loggedIn();
         $scope.deleteProject = deleteProject;
@@ -115,19 +114,25 @@ angular.module('myApp.projects')
 
 
         $scope.lookAtProfile = function(ev) {
-            // Appending dialog to document.body to cover sidenav in docs app
-            // Modal dialogs should fully cover application
-            // to prevent interaction outside of dialog
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('Profile of host:')
-                    .textContent('Here should be some information about the host')   //How to get Host info and not logged in user?
-                    .ariaLabel('Host Info')
-                    .ok('Back')
-                    .targetEvent(ev)
-            );
+
+            $mdDialog.show({
+
+                    templateUrl: 'views/profile/profile-public.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose:true
+
+                })
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
+            $scope.$watch(function() {
+                return $mdMedia('xs') || $mdMedia('sm');
+            }, function(wantsFullScreen) {
+                $scope.customFullscreen = (wantsFullScreen === true);
+            });
         };
 
 

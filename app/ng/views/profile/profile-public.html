@@ -1,11 +1,7 @@
+<div ng-controller="ProjectDetailCtrl">
 
 
-<div layout="colum" >
-</div>
-
-
-
-    <div layout="row" layout-wrap>
+<div layout="row" layout-wrap>
     <div flex="47">
         <div class="md-avatar"><img data-ng-src="data:image/png;base64,{{project.img}}" width="100%" height="100%" layout-margin="100%"/></div>
         <div class="md-title"><strong>About the project:</strong></div>
@@ -14,8 +10,8 @@
         <div layout="row" layout-align="center center"class="md-display-1 md-primary md-accent"> {{project.objective}}</div>
     </div>
 
-            <div flex="5">
-                </div>
+    <div flex="5">
+    </div>
 
 
 
@@ -30,7 +26,7 @@
                 <md-card-title>
                     <md-card-title-text>
                         <span >About the Host</span>
-                        <span class="md-headline">{{user.username}}</span> <!--Now it´s always the logged in username-->
+                        <span class="md-headline">User: {{user.username}}</span> <!--Now it´s always the logged in username-->
                         <span class="md-subhead">E-Mail: {{user.email}}</span>
                     </md-card-title-text>
                     <md-card-title-media >
@@ -42,44 +38,46 @@
                 </md-card-actions>
             </md-card>
 
-        <div layout="row"></div>
+            <div layout="row"></div>
 
 
-        <div class="md-title" layout-margin="10%">Details about the Project</div>
+            <div class="md-title" layout-margin="10%">Details about the Project</div>
 
-        <div layout="row" layout-margin="10%">
+            <div layout="row" layout-margin="10%">
 
-            <div><strong>Country:&nbsp; </strong> {{project.country}} &nbsp;&nbsp;&nbsp;&nbsp;</div>
-            <div><strong>City:&nbsp;</strong> {{project.city}} </div>
+                <div><strong>Country:&nbsp; </strong> {{project.country}} &nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div><strong>City:&nbsp;</strong> {{project.city}} </div>
 
-        </div>
-        <div layout="row" layout-margin="10%">
+            </div>
+            <div layout="row" layout-margin="10%">
                 <div><strong>Starting Date:&nbsp;</strong> {{project.fromDate}}&nbsp;</div>
                 <div><strong>Ending Date:&nbsp;</strong> {{project.toDate}}&nbsp;</div>
+            </div>
+
+
+
         </div>
 
-
-
     </div>
-
-        </div>
-    </div>
+</div>
 <!-- TODO, Rating-->
 
-             <!-- TODO, function applyForProject (here application is only possible when it is not the own project) -->
+<!-- TODO, function applyForProject (here application is only possible when it is not the own project) -->
 
 
-        <p layout="row" layout-align="center center">
-            <md-button layout="column" layout-align="space-around center" class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply">
-                <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
-                Ask to participate!
-            </md-button>        </p>
-        <!-- IF own project, then one can edit it-->
-             <md-button class=" md-raised" ui-sref="profile.editproj({projectId: project._id })"  ng-if="!canApply">
+<p layout="row" layout-align="center center">
+    <md-button layout="column" layout-align="space-around center" class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply">
+        <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
+        Ask to participate!
+    </md-button>        </p>
+<!-- IF own project, then one can edit it-->
+<md-button class=" md-raised" ui-sref="profile.editproj({projectId: project._id })"  ng-if="!canApply">
 
-             <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
-             Edit
-         </md-button>
+    <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
+    Edit
+</md-button>
+
+</div>
 
 
 
