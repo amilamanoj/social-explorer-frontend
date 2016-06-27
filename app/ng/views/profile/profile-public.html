@@ -1,83 +1,49 @@
 <div ng-controller="ProjectDetailCtrl">
 
 
-<div layout="row" layout-wrap>
-    <div flex="47">
-        <div class="md-avatar"><img data-ng-src="data:image/png;base64,{{project.img}}" width="100%" height="100%" layout-margin="100%"/></div>
-        <div class="md-title"><strong>About the project:</strong></div>
-        <div layout="row" class="md-subhead md-primary " layout-margin="100%"> {{project.description}}</div>
-        <div class="md-title"><strong>The goal of the project:</strong></div>
-        <div layout="row" layout-align="center center"class="md-display-1 md-primary md-accent"> {{project.objective}}</div>
-    </div>
 
-    <div flex="5">
-    </div>
-
-
-
-    <div flex="48">
-        <div class="md-headline" layout-align="center center" ><strong>{{project.title}}</strong></div>
-
-        <div layout="row" layout-margin="10%"> Rating: {{project.mpaa_rating}}</div>
-
-
-        <div flex-xs flex-gt-xs="100" layout="column">
+        <div flex-xs flex-gt-xs="100" layout="column" >
             <md-card >
+                <!--<md-toolbar>-->
+                    <!--<div class="md-toolbar-tools">-->
+                <!--<h2> About the Host</h2>-->
+                <!--<span flex></span>-->
+                <!--<md-button class="md-icon-button" ng-click="cancel()">-->
+                    <!--<md-icon md-svg-src="logo_updated.png" aria-label="Close dialog"></md-icon>-->
+                <!--</md-button>-->
+                <!--</div>-->
+                    <!--</md-toolbar>-->
+                <!--<br>-->
+                <md-card-title-media >
+                    <div class="md-avatar" ><img data-ng-src="data:image/png;base64,{{projectUser.img}}" style='max-height: 100%; max-width: 200px' /></div>
+                </md-card-title-media>
                 <md-card-title>
+
                     <md-card-title-text>
-                        <span >About the Host</span>
-                        <span class="md-headline">User: {{user.username}}</span> <!--Now it´s always the logged in username-->
-                        <span class="md-subhead">E-Mail: {{user.email}}</span>
+
+                        <span class="md-headline">Name: {{projectUser.username}}</span> <!--Now it´s always the logged in username-->
+                        <span class="md-subhead">E-Mail: {{projectUser.email}}</span>
+                        <span class="md-subhead">Age: {{projectUser.age}}</span>
+                        <span class="md-subhead">Country: {{projectUser.country}}</span>
+                        <span class="md-subhead">City: {{projectUser.city}}</span>
+                        <span class="md-subhead">Additional info: {{projectUser.description}}</span>
                     </md-card-title-text>
-                    <md-card-title-media >
-                        <div class="md-media-sm card-media"><img data-ng-src="data:image/png;base64,{{user.img}}"/></div>
-                    </md-card-title-media>
+
                 </md-card-title>
-                <md-card-actions layout="row" layout-align="end center" ng-click="lookAtProfile($event)">
-                    <md-button>Look at the Profile</md-button>
+
+                <md-card-actions layout="row" layout-align="end center" ng-click="close($event)">  <!--possible to close popup without own js file? -->
+
+                    <md-button>Back</md-button>
                 </md-card-actions>
             </md-card>
 
             <div layout="row"></div>
 
 
-            <div class="md-title" layout-margin="10%">Details about the Project</div>
-
-            <div layout="row" layout-margin="10%">
-
-                <div><strong>Country:&nbsp; </strong> {{project.country}} &nbsp;&nbsp;&nbsp;&nbsp;</div>
-                <div><strong>City:&nbsp;</strong> {{project.city}} </div>
-
-            </div>
-            <div layout="row" layout-margin="10%">
-                <div><strong>Starting Date:&nbsp;</strong> {{project.fromDate}}&nbsp;</div>
-                <div><strong>Ending Date:&nbsp;</strong> {{project.toDate}}&nbsp;</div>
-            </div>
-
-
 
         </div>
 
     </div>
-</div>
-<!-- TODO, Rating-->
-
-<!-- TODO, function applyForProject (here application is only possible when it is not the own project) -->
-
-
-<p layout="row" layout-align="center center">
-    <md-button layout="column" layout-align="space-around center" class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply">
-        <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
-        Ask to participate!
-    </md-button>        </p>
-<!-- IF own project, then one can edit it-->
-<md-button class=" md-raised" ui-sref="profile.editproj({projectId: project._id })"  ng-if="!canApply">
-
-    <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
-    Edit
-</md-button>
-
-</div>
 
 
 
