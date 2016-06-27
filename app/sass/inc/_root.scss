@@ -3,3 +3,16 @@
   //we cannot use layout-fill since this directive sets the height also to 100%
   width:100%;
 }
+
+.mainc {
+  background-image: url("../back.jpg");
+  background-size:     cover;
+}
+
+md-sidenav,
+md-sidenav.md-locked-open,
+md-sidenav.md-closed.md-locked-open-add-active {
+  min-width: 0px !important;
+  width: auto !important;
+  max-width: none !important;
+}
