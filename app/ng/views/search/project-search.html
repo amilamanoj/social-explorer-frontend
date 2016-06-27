@@ -1,17 +1,19 @@
 <div layout="column">
 
-    <h1 layout-align="center center" class="md-toolbar-tools" flex>Find the perfect project for you</h1>
+    <h1 layout-align="center center" class="md-toolbar-tools" flex
+        style="background-color: rgba(255,200,128,0.6)">Find the perfect project for you</h1>
 
     <section layout="row" flex>
 
-        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" md-whiteframe="4">
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" md-whiteframe="4"
+        style="background-color: rgba(255,255,255,0.9)">
             <md-content layout-padding="5">
                 Search:
                 <input ng-model="$ctrl.query">
             </md-content>
         </md-sidenav>
 
-        <md-list flex="60">
+        <md-list flex="" style="background-color: rgba(255,255,255,0.85)">
             <md-list-item class="md-3-line animate-repeat" ng-repeat="project in projects | filter:$ctrl.query"
                           ng-click="goToProject(project)">
 
