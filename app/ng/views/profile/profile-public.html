@@ -2,8 +2,8 @@
 
 
 
-        <div flex-xs flex-gt-xs="100" layout="column" >
-            <md-card >
+        <div layout="row" layout-align="center center">
+
                 <!--<md-toolbar>-->
                     <!--<div class="md-toolbar-tools">-->
                 <!--<h2> About the Host</h2>-->
@@ -14,6 +14,7 @@
                 <!--</div>-->
                     <!--</md-toolbar>-->
                 <!--<br>-->
+            <md-card layout="row" layout-align="center center">
                 <md-card-title-media >
                     <div class="md-avatar" ><img data-ng-src="data:image/png;base64,{{projectUser.img}}" style='max-height: 100%; max-width: 200px' /></div>
                 </md-card-title-media>
@@ -21,29 +22,31 @@
 
                     <md-card-title-text>
 
-                        <span class="md-headline">Name: {{projectUser.username}}</span> <!--Now it´s always the logged in username-->
-                        <span class="md-subhead">E-Mail: {{projectUser.email}}</span>
-                        <span class="md-subhead">Age: {{projectUser.age}}</span>
-                        <span class="md-subhead">Country: {{projectUser.country}}</span>
-                        <span class="md-subhead">City: {{projectUser.city}}</span>
-                        <span class="md-subhead">Additional info: {{projectUser.description}}</span>
+                        <div class="md-headline">Name: {{projectUser.username}}</div> <!--Now it´s always the logged in username-->
+                        <div class="md-subhead">E-Mail: {{projectUser.email}}</div>
+                        <div class="md-subhead">Age: {{projectUser.age}}</div>
+                        <div class="md-subhead">Country: {{projectUser.country}}</div>
+                        <div class="md-subhead">City: {{projectUser.city}}</div>
+                        <div class="md-subhead">Additional info: {{projectUser.description}}</div>
                     </md-card-title-text>
+
 
                 </md-card-title>
 
-                <md-card-actions layout="row" layout-align="end center" ng-click="cancel()">  <!--possible to close popup without own js file? -->
-
-                    <md-button>Back</md-button>
-                </md-card-actions>
-            </md-card>
-
+                </md-card>
             <div layout="row"></div>
 
 
 
         </div>
 
-    </div>
+    <md-card-actions layout="row" layout-align="end center" ng-click="cancel()">  
+
+        <md-button>Back</md-button>
+    </md-card-actions>
+
+
+</div>
 
 
 
