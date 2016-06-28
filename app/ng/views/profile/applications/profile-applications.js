@@ -61,7 +61,9 @@ angular.module('myApp.profile')
                 .ok('Withdraw application')
                 .cancel('Cancel');
             $mdDialog.show(confirm).then(function() {
-                application.$delete();
+                application.$delete(function (response) {
+                    $state.reload();
+                });
             }, function() {
                 $scope.status = 'Canceled.';
             });
