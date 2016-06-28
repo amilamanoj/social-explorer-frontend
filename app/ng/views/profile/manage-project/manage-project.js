@@ -34,39 +34,64 @@ angular.module('myApp.profile')
     })
 
     .controller('ProfileManageProjectCtrl', function($scope, $state, Profile, Project, $mdDialog, $stateParams,
-                                                     currUser, Application) {
+                                                     $mdMedia, currUser, Application) {
    
         $scope.loading = true;
         $scope.project = Project.get({projectId: $stateParams.projectId});
-        $scope.applications = Application.query({project:currUser.getUser()._id}, function() {
+        $scope.applications = Application.query({project:$stateParams.projectId}, function() {
             $scope.loading = false;
             var varIndex;
 
             for (varIndex = 0; varIndex < $scope.applications.length; ++varIndex) {
                 var appl =  $scope.applications[varIndex];
-                    var proj = Project.get({projectId:appl.project}, function ()  {
-                        appl.pTitle = proj.title;
+                    var currApplicant = Profile.get({userId:appl.applicant}, function ()  {
+                        // console.log(currApplicant);
+                        appl.pApplicant = currApplicant;
                     });
-            
+
             }
         });
 
         $scope.user=Profile.get({userId:currUser.getUser()._id});
 
-        
-        $scope.confirmAndDelete = function(ev, application) {
-            var confirm = $mdDialog.confirm()
-                .title("Delete the application?")
-                .textContent('Your application to: "' + application.pTitle + '" will be withdrawn.')
-                .ariaLabel('Delete?')
-                .targetEvent(ev)
-                .ok('Withdraw application')
-                .cancel('Cancel');
-            $mdDialog.show(confirm).then(function() {
-                application.$delete();
-            }, function() {
-                $scope.status = 'Canceled.';
-            });
+
+        $scope.lookAtProfile = function(ev, appl) {
+
+            if(currUser.loggedIn()) {
+
+                $scope.projectUser = appl.pApplicant;
+                console.log($scope.projectUser);
+
+                $mdDialog.show({
+
+                        templateUrl: 'views/profile/manage-project/profile-applicant.html',
+                        parent: angular.element(document.body),
+                        targetEvent: ev,
+                        clickOutsideToClose: true
+
+                    })
+
+                    .then(function (answer) {
+                        $scope.status = 'You said the information was "' + answer + '".';
+                    }, function () {
+                        $scope.status = 'You cancelled the dialog.';
+                    });
+                $scope.$watch(function () {
+                    return $mdMedia('xs') || $mdMedia('sm');
+                }, function (wantsFullScreen) {
+                    $scope.customFullscreen = (wantsFullScreen === true);
+                });
+            }
+
+            else{
+                $mdDialog.show({
+
+                    templateUrl: 'views/profile/dialog-not-logged.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true
+                })
+            }
         };
         
 

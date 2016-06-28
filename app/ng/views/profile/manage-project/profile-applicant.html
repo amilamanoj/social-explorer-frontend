@@ -1,0 +1,59 @@
+<div ng-controller="ProjectDetailCtrl">
+
+
+
+        <div layout="row" layout-align="center center">
+
+            <md-card layout="row" layout-align="center center">
+                <md-card-title-media >
+                    <div class="md-avatar" ><img data-ng-src="data:image/png;base64,{{projectUser.img}}" style='max-height: 100%; max-width: 200px' /></div>
+                </md-card-title-media>
+                <md-card-title>
+
+                    <md-card-title-text>
+
+                        <div class="md-headline">Name: {{projectUser.username}}</div> <!--Now it´s always the logged in username-->
+                        <div class="md-subhead">E-Mail: {{projectUser.email}}</div>
+                        <div class="md-subhead">Rating: </div>
+                        <div class="md-subhead">Age: {{projectUser.age}}</div>
+                        <div class="md-subhead">Country: {{projectUser.country}}</div>
+                        <div class="md-subhead">City: {{projectUser.city}}</div>
+
+                    </md-card-title-text>
+
+
+                </md-card-title>
+
+                </md-card>
+            <div layout="row"></div>
+
+
+
+        </div>
+
+    <md-card >
+    <div class="md-subhead">About me: {{projectUser.description}} </div>
+        </md-card>
+
+
+    <div layout="row" layout-align="end center">
+    <md-card-actions ng-click="cancel()">
+        <md-button  class=" md-accent">Accept</md-button>
+    </md-card-actions>
+
+    <md-card-actions ng-click="cancel()">
+        <md-button  class=" md-accent">Reject</md-button>
+    </md-card-actions>
+
+    <md-card-actions  ng-click="cancel()">
+        <md-button  class=" md-accent">Cancel</md-button>
+    </md-card-actions>
+
+</div>
+</div>
+
+
+
+
+
+
