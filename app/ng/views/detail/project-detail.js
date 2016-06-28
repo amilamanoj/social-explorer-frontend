@@ -180,7 +180,7 @@ angular.module('myApp.projects')
             $scope.newApplication.$save()
                 .then(function(){
                     // $rootScope.$broadcast('applicationCreated', $scope.newApplication);
-                    $state.go('profile.overview');
+                    $state.go('profile.applications');
                     showSimpleToast("Application sent!")
                 }).catch(function(e){
                 console.log("error: " + e);
