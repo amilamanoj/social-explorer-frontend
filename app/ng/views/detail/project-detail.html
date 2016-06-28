@@ -39,8 +39,8 @@
                 <md-card-title>
                     <md-card-title-text>
                         <span >About the Host</span>
-                        <span class="md-headline">{{projectUser.username}}</span> <!--Now it´s always the logged in username-->
-                        <span class="md-subhead">E-Mail: {{projectUser.email}}</span>
+                        <span class="md-headline">{{projectUser.username}}</span>
+                        <span ng-if="loggedIn" class="md-subhead">E-Mail: {{projectUser.email}}</span>
                     </md-card-title-text>
                     <md-card-title-media >
                         <div class="md-media-sm card-media"><img data-ng-src="data:image/png;base64,{{projectUser.img}}"/></div>
