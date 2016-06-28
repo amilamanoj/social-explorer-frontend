@@ -25,7 +25,7 @@
 
 <!-- logged in -->
 <!--The left side-->
-    <md-button  ng-click="goToProfile()" aria-label="My profile"> Hello, {{user.username}} </md-button>
+
 
     <span> <md-button layout-align="center center" ng-if="loggedIn && !user.host" ng-click="goToSearch()" aria-label="Search for a project!"> <md-icon md-svg-icon="action:ic_search_24px"></md-icon> Search for a project! </md-button></span>
 
@@ -33,6 +33,7 @@
 
 <!--The right side-->
 <span>
+      <md-button  ng-click="goToProfile()" aria-label="My profile"> Hello, {{user.username}} </md-button>
     <md-button ng-if="loggedIn" ng-click="logout()" aria-label="Log out"> Log out </md-button>
     </span>
 
