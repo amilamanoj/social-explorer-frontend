@@ -75,8 +75,13 @@ angular.module('myApp.profile')
         };
 
         $scope.edit = function (ev, proj){
-
             $state.go('profile.editproj',{project: proj});
+        }
+
+
+        $scope.goToProject=function (proj){
+            console.log("going to project");
+            $state.go('projects.detail', {'projectId': proj._id });
         }
 
     });
