@@ -3,7 +3,8 @@ angular.module('myApp.profile', ['ngResource', 'ui.router'])
     // })
 
 .config(function ($stateProvider, $urlRouterProvider, profileOverviewState,
-                  profileCreateProjState, profileEditProjState, profileApplicationsState, profileSettingsState) {
+                  profileCreateProjState, profileEditProjState, profileApplicationsState, profileSettingsState, 
+                  profileManageProjectState) {
     
     $stateProvider
 
@@ -61,6 +62,8 @@ angular.module('myApp.profile', ['ngResource', 'ui.router'])
         .state(profileEditProjState.name, profileEditProjState.options)
     
         .state(profileApplicationsState.name, profileApplicationsState.options)
+        
+        .state(profileManageProjectState.name, profileManageProjectState.options)
 
         .state(profileSettingsState.name, profileSettingsState.options);
 

@@ -33,7 +33,7 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileOverviewCtrl', function($scope, $state, Profile, $mdDialog, currUser, Project) {
+    .controller('ProfileOverviewCtrl', function($scope, $state, Profile, $mdDialog, $stateParams, currUser, Project) {
    
         $scope.loading = true;
         $scope.projects = Project.query(function() {
@@ -72,6 +72,11 @@ angular.module('myApp.profile')
             }, function() {
                 $scope.status = 'Canceled.';
             });
+        };
+
+        $scope.goToManageProject = function goToManageProject(proj){
+            console.log("going to project manage");
+            $state.go('profile.manageProject', {'projectId': proj._id });
         };
 
         $scope.edit = function (ev, proj){

@@ -1,0 +1,31 @@
+<div layout="column" ng-cloak>
+
+    <md-list>
+
+        <md-toolbar class="md-hue-1" >
+            <h1  layout-align="center center" class="md-toolbar-tools">{{project.title}}</h1>
+        </md-toolbar>
+
+        <img id="mySpinner" src="ripple.gif" ng-show="loading" />
+
+        <md-list-item class="md-3-line" ng-repeat="application in applications " ng-click="null" >
+
+            <img data-ng-src="data:image/png;base64,{{project.img}}" class="md-avatar" />
+
+            <div style="width:700px" class="md-list-item-text" layout="column" >
+                <h3>{{ application.pTitle }}</h3>
+                <h4>Sent on: {{ application.createdDate }}</h4>
+            </div>
+
+            <md-button class="md-secondary" ng-click="confirmAndDelete($event, application)" style="padding-bottom: 24px">
+                <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
+            </md-button>
+
+
+            <md-divider ></md-divider>
+        </md-list-item>
+
+
+
+</div>
+
