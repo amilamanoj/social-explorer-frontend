@@ -29,8 +29,14 @@
         <md-input-container class="md-block">
             <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
             <label>Country</label>
-            <input  ng-model="user.country" >
+            <md-select ng-model="user.country">
+                <md-option ng-repeat="country in countries" value="{{country}}">{{country}}</md-option>
+            </md-select>
         </md-input-container>
+
+
+
+
 
         <md-input-container class="md-block">
             <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
