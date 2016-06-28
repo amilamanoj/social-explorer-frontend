@@ -25,14 +25,14 @@
 
 <!-- logged in -->
 <!--The left side-->
+    <md-button  ng-click="goToProfile()" aria-label="My profile"> Hello, {{user.username}} </md-button>
 
-    <span> <md-button ng-if="loggedIn && !user.host" ng-click="goToSearch()" aria-label="Search for a project!"> Search for a project! </md-button></span>
+    <span> <md-button layout-align="center center" ng-if="loggedIn && !user.host" ng-click="goToSearch()" aria-label="Search for a project!"> Search for a project! </md-button></span>
 
 <span flex></span>
 
 <!--The right side-->
 <span>
-    <md-button ng-if="loggedIn" ng-click="goToProfile()" aria-label="My profile"> My profile </md-button>
     <md-button ng-if="loggedIn" ng-click="logout()" aria-label="Log out"> Log out </md-button>
     </span>
 
