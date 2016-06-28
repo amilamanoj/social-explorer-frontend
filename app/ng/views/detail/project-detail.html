@@ -7,11 +7,20 @@
 
     <div layout="row" layout-wrap>
     <div flex="47">
+
+
+
         <div class="md-avatar"><img data-ng-src="data:image/png;base64,{{project.img}}" width="100%" height="100%" layout-margin="100%"/></div>
+
+        <md-card style="background-color: rgba(255, 255, 255, 0.5)">
+
         <div class="md-title"><strong>About the project:</strong></div>
         <div layout="row" class="md-subhead md-primary " layout-margin="100%"> {{project.description}}</div>
         <div class="md-title"><strong>The goal of the project:</strong></div>
-        <div layout="row" layout-align="center center"class="md-display-1 md-primary md-accent"> {{project.objective}}</div>
+        <div layout="row"   layout-margin="100%" class="md-subhead md-primary "> {{project.objective}}</div>
+
+
+            </md-card>
     </div>
 
             <div flex="5">
@@ -44,6 +53,7 @@
 
         <div layout="row"></div>
 
+            <md-card style="background-color: rgba(255, 255, 255, 0.5)">
 
         <div class="md-title" layout-margin="10%">Details about the Project</div>
 
@@ -58,8 +68,21 @@
                 <div><strong>Ending Date:&nbsp;</strong> {{project.toDate}}&nbsp;</div>
         </div>
 
+</md-card>
+            <p layout="row" layout-align="center center">
+                <md-button layout="column" layout-align="space-around center" class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply">
+                    <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
+                    Ask to participate!
+                </md-button>        </p>
+            <!-- IF own project, then one can edit it-->
 
+            <p layout="row" layout-align="center center">
+            <md-button class=" md-raised" ui-sref="profile.editproj({projectId: project._id })"  ng-if="!canApply" layout-align="end center">
 
+                <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
+                Edit
+            </md-button>
+            </p>
     </div>
 
         </div>
@@ -69,17 +92,7 @@
              <!-- TODO, function applyForProject (here application is only possible when it is not the own project) -->
 
 
-        <p layout="row" layout-align="center center">
-            <md-button layout="column" layout-align="space-around center" class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply">
-                <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
-                Ask to participate!
-            </md-button>        </p>
-        <!-- IF own project, then one can edit it-->
-             <md-button class=" md-raised" ui-sref="profile.editproj({projectId: project._id })"  ng-if="!canApply">
 
-             <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
-             Edit
-         </md-button>
 
 
 

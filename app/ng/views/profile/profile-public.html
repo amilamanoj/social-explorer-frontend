@@ -24,10 +24,11 @@
 
                         <div class="md-headline">Name: {{projectUser.username}}</div> <!--Now it´s always the logged in username-->
                         <div class="md-subhead">E-Mail: {{projectUser.email}}</div>
+                        <div class="md-subhead">Rating: </div>
                         <div class="md-subhead">Age: {{projectUser.age}}</div>
                         <div class="md-subhead">Country: {{projectUser.country}}</div>
                         <div class="md-subhead">City: {{projectUser.city}}</div>
-                        <div class="md-subhead">About me: {{projectUser.description}}</div>
+
                     </md-card-title-text>
 
 
@@ -39,6 +40,10 @@
 
 
         </div>
+
+    <md-card >
+    <div class="md-subhead">About me: {{projectUser.description}} </div>
+        </md-card>
 
     <md-card-actions layout="row" layout-align="end center" ng-click="cancel()">  
 
