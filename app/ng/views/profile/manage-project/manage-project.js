@@ -60,17 +60,21 @@ angular.module('myApp.profile')
         $scope.lookAtProfile = function(ev, appl) {
 
             if(currUser.loggedIn()) {
+                console.log(appl);
 
-                $scope.projectUser = appl.pApplicant;
-                console.log($scope.projectUser);
 
                 $mdDialog.show({
+
 
                         templateUrl: 'views/profile/manage-project/profile-applicant.html',
                         parent: angular.element(document.body),
                         targetEvent: ev,
-                        clickOutsideToClose: true
-
+                        clickOutsideToClose: true,
+                        locals: {
+                            applicant: appl.pApplicant,
+                            statement: appl.statement
+                        },
+                        controller: DialogController
                     })
 
                     .then(function (answer) {
@@ -95,6 +99,11 @@ angular.module('myApp.profile')
                 })
             }
         };
+
+        function DialogController($scope, statement, applicant) {
+            $scope.applicant = applicant;
+            $scope.statement = statement;
+        }
         
 
     });
