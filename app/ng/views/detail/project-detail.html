@@ -38,7 +38,10 @@
             <md-card style="background-color: rgba(255, 255, 255, 0.5)">
                 <md-card-title>
                     <md-card-title-text>
+                        <div layout="row">
                         <span >About the Host</span>
+                        <div ng-include="'views/rating/rating-read.html'" layout-margin="1px"></div>
+                        </div>
                         <span class="md-headline">{{projectUser.username}}</span>
                         <span ng-if="loggedIn" class="md-subhead">E-Mail: {{projectUser.email}}</span>
                     </md-card-title-text>
@@ -87,7 +90,7 @@
 
         </div>
     </div>
-<!-- TODO, Rating-->
+<!-- TODO, rating-->
 
              <!-- TODO, function applyForProject (here application is only possible when it is not the own project) -->
 

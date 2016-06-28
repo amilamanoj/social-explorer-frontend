@@ -1,8 +1,7 @@
 <div ng-controller="ProjectDetailCtrl">
 
 
-
-        <div layout="row" layout-align="center center">
+    <div layout="row" layout-align="center center">
 
                 <!--<md-toolbar>-->
                     <!--<div class="md-toolbar-tools">-->
@@ -24,10 +23,11 @@
 
                         <div class="md-headline">Name: {{projectUser.username}}</div> <!--Now it´s always the logged in username-->
                         <div class="md-subhead">E-Mail: {{projectUser.email}}</div>
-                        <div class="md-subhead">Rating: </div>
+                        <div ng-include="'views/rating/rating-read.html'" layout-margin="1px"></div>
                         <div class="md-subhead">Age: {{projectUser.age}}</div>
                         <div class="md-subhead">Country: {{projectUser.country}}</div>
                         <div class="md-subhead">City: {{projectUser.city}}</div>
+
 
                     </md-card-title-text>
 
