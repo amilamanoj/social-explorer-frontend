@@ -13,10 +13,10 @@
             <img data-ng-src="data:image/png;base64,{{project.img}}" class="md-avatar" />
 
             <div style="width:700px" class="md-list-item-text" layout="column" >
-                <h3>{{ application.pApplicant.username }}</h3>
+                <h3>User: {{ application.pApplicant.username }}</h3>
                 <h4>Sent on: {{ application.createdDate }}</h4>
+                <h3>Status: <span class="{{ application.status }}">{{ application.status }}</span></h3>
             </div>
-
 
             <md-divider ></md-divider>
         </md-list-item>
