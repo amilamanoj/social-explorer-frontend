@@ -15,6 +15,7 @@
             <div style="width:700px" class="md-list-item-text" layout="column" >
                 <h3>{{ application.pTitle }}</h3>
                 <h4>Sent on: {{ application.createdDate }}</h4>
+                <h3>Status: <span class="{{ application.status }}">{{ application.status }}</span></h3>
             </div>
 
             <md-button class="md-secondary" ng-click="confirmAndDelete($event, application)" style="padding-bottom: 24px">
