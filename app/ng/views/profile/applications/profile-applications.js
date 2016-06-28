@@ -38,6 +38,7 @@ angular.module('myApp.profile')
         $scope.loading = true;
         $scope.applications = Application.query({applicant:currUser.getUser()._id}, function() {
             $scope.loading = false;
+            $scope.$parent.selectedIndex=1;
             var varIndex;
 
             for (varIndex = 0; varIndex < $scope.applications.length; ++varIndex) {
