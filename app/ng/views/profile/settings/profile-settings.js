@@ -47,7 +47,8 @@ angular.module('myApp.profile')
              $scope.newUser.email = this.user.email;
              $scope.newUser.age = this.user.age;
              $scope.newUser.country = this.user.country;
-             $scope.newUser.city = this.user.city;  
+             $scope.newUser.city = this.user.city;
+             $scope.newUser.description = this.user.description;
 
 
              if (this.user.image!= undefined) {
