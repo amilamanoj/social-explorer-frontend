@@ -44,9 +44,11 @@ angular.module('myApp.profile')
 
             for (varIndex = 0; varIndex < $scope.applications.length; ++varIndex) {
                 var appl =  $scope.applications[varIndex];
-                    var currApplicant = Profile.get({userId:appl.applicant}, function ()  {
-                        // console.log(currApplicant);
-                        appl.pApplicant = currApplicant;
+                    Profile.get({userId:appl.applicant}, function (currApplicant)  {
+                        var result = $scope.applications.filter(function( obj ) {
+                            return obj.applicant == currApplicant._id;
+                        });
+                        result[0].pApplicant = currApplicant;
                     });
 
             }
