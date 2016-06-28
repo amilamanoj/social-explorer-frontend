@@ -73,21 +73,34 @@ angular.module('myApp.projects')
 
         $scope.applyForProject = function(ev) {
             // Appending dialog to document.body to cover sidenav in docs app
-            var confirm = $mdDialog.prompt()
-                .title('Participate in the project')
-                .textContent('Let the organizer know why do you want to participate in this event, in one sentence')
-                .placeholder('statement')
-                .ariaLabel('statement')
-                // .initialValue('your text there')
-                .targetEvent(ev)
-                .ok('Apply!')
-                .cancel('Cancel');
-            $mdDialog.show(confirm).then(function(result) {
-                $scope.status = 'You applied with statement ' + result + '.';
-                sendApplication(result);
-            }, function() {
-                $scope.status = 'You canceled.';
-            });
+
+            if(currUser.loggedIn()) {
+
+                var confirm = $mdDialog.prompt()
+                    .title('Participate in the project')
+                    .textContent('Let the organizer know why do you want to participate in this event, in one sentence')
+                    .placeholder('statement')
+                    .ariaLabel('statement')
+                    // .initialValue('your text there')
+                    .targetEvent(ev)
+                    .ok('Apply!')
+                    .cancel('Cancel');
+                $mdDialog.show(confirm).then(function (result) {
+                    $scope.status = 'You applied with statement ' + result + '.';
+                    sendApplication(result);
+                }, function () {
+                    $scope.status = 'You canceled.';
+                });
+            }
+            else{
+                    $mdDialog.show({
+
+                        templateUrl: 'views/profile/dialog-not-logged.html',
+                        parent: angular.element(document.body),
+                        targetEvent: ev,
+                        clickOutsideToClose: true,
+                    })
+                }
         };
 
         // $scope.lookAtProfile = function(ev, user) { //just a preview example for a pop up window
@@ -117,25 +130,38 @@ angular.module('myApp.projects')
 
         $scope.lookAtProfile = function(ev) {
 
-            $mdDialog.show({
+            if(currUser.loggedIn()) {
 
-                    templateUrl: 'views/profile/profile-public.html',
+                $mdDialog.show({
+
+                        templateUrl: 'views/profile/profile-public.html',
+                        parent: angular.element(document.body),
+                        targetEvent: ev,
+                        clickOutsideToClose: true
+
+                    })
+
+                    .then(function (answer) {
+                        $scope.status = 'You said the information was "' + answer + '".';
+                    }, function () {
+                        $scope.status = 'You cancelled the dialog.';
+                    });
+                $scope.$watch(function () {
+                    return $mdMedia('xs') || $mdMedia('sm');
+                }, function (wantsFullScreen) {
+                    $scope.customFullscreen = (wantsFullScreen === true);
+                });
+            }
+
+            else{
+                $mdDialog.show({
+
+                    templateUrl: 'views/profile/dialog-not-logged.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
-                    clickOutsideToClose:true
-
+                    clickOutsideToClose: true,
                 })
-               
-                .then(function(answer) {
-                    $scope.status = 'You said the information was "' + answer + '".';
-                }, function() {
-                    $scope.status = 'You cancelled the dialog.';
-                });
-            $scope.$watch(function() {
-                return $mdMedia('xs') || $mdMedia('sm');
-            }, function(wantsFullScreen) {
-                $scope.customFullscreen = (wantsFullScreen === true);
-            });
+            }
         };
 
 
@@ -186,7 +212,6 @@ angular.module('myApp.projects')
                 .targetEvent(ev)
                 .ok('Yes')
                 .cancel('Abort');
-
             var toastText;
             $mdDialog.show(confirm).then(function() {
                 return $scope.project.$remove().then(function() {
@@ -204,6 +229,7 @@ angular.module('myApp.projects')
             $mdDialog.cancel();
         };
 
+
         function showSimpleToast(txt) {
             $mdToast.show(
                 $mdToast.simple()
@@ -212,6 +238,26 @@ angular.module('myApp.projects')
                     .hideDelay(3000)
             );
         }
+
+         $scope.showLoginDialog=function () {
+
+            $mdDialog.show({
+                controller: 'login',
+                templateUrl: 'components/login-dialog/login-dialog.html',
+                clickOutsideToClose:true,
+
+           });
+         }
+
+         $scope.showSignupDialog=function(){
+
+            $mdDialog.show({
+                controller: 'register',
+                templateUrl: 'components/register-dialog/register-dialog.html',
+                clickOutsideToClose:true,
+
+            });
+        };
 
 
     });

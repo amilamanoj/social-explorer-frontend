@@ -1,3 +1,5 @@
+<div ng-controller="ProfileSettingsCtrl">
+
 <div layout="column">
 
     <h1 layout-align="center center" class="md-toolbar-tools" flex
@@ -28,6 +30,16 @@
                         <input flex type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
                     </div>
                 </div>
+
+                <md-input-container class="md-block">
+                    <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
+                    <label>Country</label>
+                    <md-select ng-model="project.country">
+                        <md-option ng-repeat="country in countries" value="{{country}}">{{country}}</md-option>
+                    </md-select>
+                </md-input-container>
+
+
             </md-content>
         </md-sidenav>
 

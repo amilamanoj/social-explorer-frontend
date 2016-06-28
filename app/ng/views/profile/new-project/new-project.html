@@ -1,3 +1,5 @@
+<div ng-controller="ProfileSettingsCtrl">
+
 <md-content layout-padding>
     <form name="projectForm">
         <h3>Create new project</h3>
@@ -23,10 +25,9 @@
             <md-input-container class="md-block">
                 <md-icon md-svg-icon="maps:ic_my_location_24px"></md-icon>
                 <label>Country</label>
-                <input md-maxlength="20" required md-no-asterisk name="objective" ng-model="project.country">
-                <div ng-messages="projectForm.country.$error">
-                    <div ng-message="required">This is required.</div>
-                </div>
+                <md-select ng-model="project.country">
+                    <md-option ng-repeat="country in countries" value="{{country}}">{{country}}</md-option>
+                </md-select>
             </md-input-container>
             <md-input-container class="md-block">
                 <md-icon md-svg-icon="social:ic_location_city_24px"></md-icon>

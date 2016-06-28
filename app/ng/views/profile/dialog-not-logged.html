@@ -1,0 +1,16 @@
+<div ng-controller="ProjectDetailCtrl">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Attention</h2>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-margin>
+    <p class=" md-primary">You are currently not logged In.</p>
+    <p class=" md-primary">Please <strong>Log In</strong> or <strong>Sign Up</strong> for this action.</p>
+
+    <md-button class=" md-accent" ng-click="showLoginDialog()">Log In</md-button>
+    <md-button class=" md-accent" ng-click="showSignupDialog()">Sign Up</md-button>
+    <md-button ng-click="cancel()">Cancel</md-button>
+        </md-dialog-content>
+</div>

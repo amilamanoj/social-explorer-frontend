@@ -10,35 +10,45 @@
 
     <md-content layout-padding="5">
     <md-input-container class="md-block">
+        <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
+
         <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
         <label>Username</label>
         <input required name="userName" ng-model="user.username" ng-init="user.username">
     </md-input-container>
         <md-input-container class="md-block">
+            <md-icon md-svg-icon="content:ic_mail_24px"></md-icon>
             <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
             <label>Email</label>
             <input required name="userName" ng-model="user.email" ng-init="user.email">
         </md-input-container>
 
         <md-input-container class="md-block">
-            <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
+            <md-icon md-svg-icon="social:ic_cake_24px"></md-icon>
             <label>Age</label>
             <input  ng-model="user.age" >
         </md-input-container>
-
+        <div layout="row">
         <md-input-container class="md-block">
+            <md-icon md-svg-icon="maps:ic_my_location_24px"></md-icon>
             <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
             <label>Country</label>
-            <input  ng-model="user.country" >
+            <md-select ng-model="user.country">
+                <md-option ng-repeat="country in countries" value="{{country}}">{{country}}</md-option>
+            </md-select>
         </md-input-container>
 
         <md-input-container class="md-block">
+            <md-icon md-svg-icon="social:ic_location_city_24px"></md-icon>
             <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
             <label>City</label>
             <input  ng-model="user.city" >
         </md-input-container>
+            </div>
 
         <md-input-container class="md-block">
+            <md-icon md-svg-icon="action:ic_description_24px"></md-icon>
+
             <!--<md-icon md-svg-icon="action:ic_card_travel_24px"></md-icon>-->
             <label>About me</label>
             <input  ng-model="user.description" >
