@@ -43,8 +43,11 @@ angular.module('myApp.profile')
 
             for (varIndex = 0; varIndex < $scope.applications.length; ++varIndex) {
                 var appl =  $scope.applications[varIndex];
-                    var proj = Project.get({projectId:appl.project}, function ()  {
-                        appl.pTitle = proj.title;
+                    Project.get({projectId:appl.project}, function (proj)  {
+                        var result = $scope.applications.filter(function( obj ) {
+                            return obj.project == proj._id;
+                        });
+                        result[0].pTitle = proj.title;
                     });
             
             }
