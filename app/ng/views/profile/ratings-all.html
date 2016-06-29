@@ -1,0 +1,31 @@
+<div ng-controller="ProfileRatingCtrl">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Rating</h2>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-margin>
+        <md-list-item class="md-3-line" ng-repeat="rating in ratings " ng-click="null" >
+
+            <!--<img data-ng-src="data:image/png;base64,{{project.img}}" class="md-avatar" />-->
+
+            <div style="width:700px" class="md-list-item-text" layout="column" >
+                <h3>Project: {{ rating.pTitle }}</h3>
+                <div star-rating rating="rating.rate" read-only="true" max-rating="5"  ></div>
+            <h3>{{ rating.describtion }}</h3>
+                <h3>Rated from User :{{ rating.cUser }}</h3>
+
+
+                <!--<md-button class="md-secondary" ng-click="confirmAndDelete($event, application)" style="padding-bottom: 24px">-->
+                <!--<md-icon md-svg-icon="action:ic_delete_24px"></md-icon>-->
+            <!--</md-button>-->
+
+
+            <md-divider ></md-divider>
+        </md-list-item>
+
+
+        <md-button ng-click="cancel()">Cancel</md-button>
+    </md-dialog-content>
+</div>

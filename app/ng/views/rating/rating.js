@@ -30,12 +30,70 @@ angular.module('myApp.profile')
 
     })
 
-app.controller('ProfileRatingCtrl', ['$scope', function ($scope) {
+app.controller('ProfileRatingCtrl', function($scope, $state, Profile, Project, $mdMedia, $mdDialog, currUser, Rating, $stateParams) {
+
+
+    $scope.loading = true;
+    $scope.ratings = Rating.query({createdUser:currUser.getUser()._id}  , function() {
+        $scope.loading = false;
+        $scope.$parent.selectedIndex=1;
+        var varIndex;
+
+        for (varIndex = 0; varIndex < $scope.ratings.length; ++varIndex) {
+            var appl =  $scope.ratings[varIndex];
+            Project.get({projectId:appl.project}, function (proj)  {
+                var result = $scope.ratings.filter(function( obj ) {
+                    return obj.project == proj._id;
+                });
+                result[0].pTitle = proj.title;
+            });
+
+        }
+
+        for (varIndex = 0; varIndex < $scope.ratings.length; ++varIndex) {
+            var user =  $scope.ratings[varIndex];
+            Profile.get({userId:user.createdUser}, function (userr)  {
+                var result = $scope.ratings.filter(function( obj ) {
+                    return obj.createdUser == userr._id;
+                });
+                result[0].cUser = userr.username;
+            });
+
+        }
+
+
+    });
+    console.log(currUser.getUser());
+    console.log($scope.ratings);
+
+
+    $scope.ratingDialog = function(ev) {
+
+
+            $mdDialog.show({
+
+                    templateUrl: 'views/profile/ratings-all.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true
+                })
+
+
+    };
+    // $scope.ratings = Rating.query();
+    //
+    // console.log($scope.ratings );
+    // console.log(currUser.getUser()._id);
+    //
+    // $scope.rating =Rating.get({ratedUser: currUser.getUser()._id});
+
+    //console.log($scope.rating );
+    //$scope.project = Project.get({projectId: $stateParams.projectId});
+
 
     $scope.starRating1 = 4;
     $scope.starRating2 = 5;
 
-    $scope.hoverRating1 = $scope.hoverRating2 = $scope.hoverRating3 = 0;
 
     $scope.click1 = function (param) {
         console.log('Click(' + param + ')');
@@ -78,7 +136,7 @@ app.controller('ProfileRatingCtrl', ['$scope', function ($scope) {
     //     console.log('mouseLeave(' + param + ')');
     //     $scope.hoverRating3 = param + '*';
     // };
-}]);
+});
 
 app.directive('starRating', function () {
     return {

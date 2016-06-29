@@ -53,6 +53,9 @@ angular.module('myApp.profile')
             }
         });
 
+        console.log( $scope.applications);
+
+
         $scope.user=Profile.get({userId:currUser.getUser()._id});
 
         

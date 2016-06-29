@@ -1,7 +1,10 @@
 <div  ng-app="app" ng-controller="ProfileRatingCtrl">
 
-    <div star-rating rating="starRating2" read-only="true" max-rating="5" click="click2(param)" mouse-hover="mouseHover2(param)" mouse-leave="mouseLeave2(param)"></div>
+    <div star-rating rating="starRating2" read-only="true" max-rating="5" ng-click="ratingDialog($event)" ></div>
     <div> <span class="label label-primary"> Rating: {{starRating2}}</span>
 
     </div>
 </div>
+
+
+<!--mouse-hover="mouseHover2(param)" mouse-leave="mouseLeave2(param)"-->
