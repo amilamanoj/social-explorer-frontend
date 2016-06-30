@@ -23,8 +23,7 @@
 
                     <div class="md-headline">Name: {{user.username}}</div> <!--Now it´s always the logged in username-->
                     <div class="md-subhead">E-Mail: {{user.email}}</div>
-                    <div Rating> </div> <!-- Rating causes errors
-                    <!--<div ng-include="'views/rating/rating-read.html'" layout-margin="1px"></div>-->
+                    <div ng-include="'views/rating/rating-read.html'" layout-margin="1px"></div>
                     <div class="md-subhead">Age: {{user.age}}</div>
                     <div class="md-subhead">Country: {{user.country}}</div>
                     <div class="md-subhead">City: {{user.city}}</div>
@@ -46,11 +45,20 @@
         <div class="md-subhead">About me: {{user.description}} </div>
     </md-card>
 
+    <div layout="row" layout-align="end center">
+
+    <md-card-actions layout="row" layout-align="end center" ng-click="gotToEdit()">
+
+        <md-button  class=" md-accent">Edit</md-button>
+    </md-card-actions>
+
+
     <md-card-actions layout="row" layout-align="end center" ng-click="cancel()">
 
         <md-button  class=" md-accent">Back</md-button>
     </md-card-actions>
 
+        </div>
 
 </div>
 
