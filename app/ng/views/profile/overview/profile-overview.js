@@ -34,7 +34,7 @@ angular.module('myApp.profile')
     })
 
     .controller('ProfileOverviewCtrl', function($scope, $state, Profile, $mdDialog, $stateParams, currUser, Project) {
-   
+
         $scope.loading = true;
         $scope.projects = Project.query(function() {
             $scope.loading = false;
@@ -58,7 +58,7 @@ angular.module('myApp.profile')
                 return false;
             }
         };
-        
+
         $scope.confirmAndDelete = function(ev, proj) {
             var confirm = $mdDialog.confirm()
                 .title("Delete the project?")
@@ -81,13 +81,34 @@ angular.module('myApp.profile')
 
         $scope.edit = function (ev, proj){
             $state.go('profile.editproj',{project: proj});
-        }
+        };
 
 
         $scope.goToProject=function (proj){
             console.log("going to project");
             $state.go('projects.detail', {'projectId': proj._id });
-        }
+        };
+
+
+        $scope.lookAtUser = function(ev) {
+
+
+
+                $mdDialog.show({
+
+                    templateUrl: 'views/profile/profile-details.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true
+
+                })
+            }
+
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+        
+
 
     });
 
