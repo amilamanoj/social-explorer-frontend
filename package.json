@@ -14,7 +14,7 @@
   "scripts": {
     "postinstall": "bower install && gulp clean && gulp install",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p $PORT -c-1"
+    "start": "http-server -p $PORT -c-1"
   },
   "author": "Amila, Alex, Mathias, Semra",
   "license": "ISC",
