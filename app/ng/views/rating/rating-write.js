@@ -42,12 +42,13 @@ app.controller('ProfileWriteRatingCtrl', function(shareDataServiceRating,$scope,
         $scope.newRating.createdUser = currUser.getUser()._id;
         $scope.newRating.rate = this.starRating1;
         // i'm the applicant, so i rate the host
+
         if(currUser.getUser()._id==$scope.aplication[1]) {
-            $scope.newRating.ratedUser = $scope.aplication[1];
+            $scope.newRating.ratedUser = $scope.aplication[2]; // host
         }
         // i'm the host, so i rate the applicant
         else{
-            $scope.newRating.ratedUser = $scope.aplication[2];
+            $scope.newRating.ratedUser = $scope.aplication[1]; // application
         }
         $scope.newRating.createdDate = new Date();
         $scope.newRating.description = this.rating.description;
