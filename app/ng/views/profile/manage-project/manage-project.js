@@ -74,9 +74,11 @@ angular.module('myApp.profile')
                         console.log(answer);
                         appl.status = answer;
                         appl.processedDate = new Date();
-                        appl.$update()
+                        var applicant = appl.pApplicant;
+                            appl.$update()
                             .then(function () {
                                 // $rootScope.$broadcast('projectUpdate', $scope.newProject);
+                                appl.pApplicant = applicant;
                                 showSimpleToast("Application updated!")
                             }).catch(function (e) {
                             console.log("error: " + e);
