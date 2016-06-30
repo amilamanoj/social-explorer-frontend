@@ -22,6 +22,7 @@
             <md-button class="md-secondary" ng-click="confirmAndDelete($event, application)" style="padding-bottom: 24px">
                 <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
             </md-button>
+            <!--the rate button should be only available when the STATUS is accepted and only the project was rated-->
             <md-button class="md-secondary" ng-click="rating($event); functionForInsert(application.project, application.applicant, application.host)" style="padding-bottom: 24px; margin-right:60px" >
                Rate
             </md-button>
