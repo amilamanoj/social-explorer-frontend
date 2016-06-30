@@ -60,11 +60,8 @@ angular.module('myApp.profile')
         $scope.lookAtProfile = function(ev, appl) {
 
             if(currUser.loggedIn()) {
-                console.log(appl);
-
 
                 $mdDialog.show({
-
 
                         templateUrl: 'views/profile/manage-project/profile-applicant.html',
                         parent: angular.element(document.body),
@@ -78,31 +75,33 @@ angular.module('myApp.profile')
                     })
 
                     .then(function (answer) {
-                        $scope.status = 'You said the information was "' + answer + '".';
+                        console.log(answer);
+                        appl.status = answer;
+                        appl.processedDate = new Date();
                     }, function () {
                         $scope.status = 'You cancelled the dialog.';
                     });
-                $scope.$watch(function () {
-                    return $mdMedia('xs') || $mdMedia('sm');
-                }, function (wantsFullScreen) {
-                    $scope.customFullscreen = (wantsFullScreen === true);
-                });
+                // $scope.$watch(function () {
+                //     return $mdMedia('xs') || $mdMedia('sm');
+                // }, function (wantsFullScreen) {
+                //     $scope.customFullscreen = (wantsFullScreen === true);
+                // });
             }
 
-            else{
-                $mdDialog.show({
-
-                    templateUrl: 'views/profile/dialog-not-logged.html',
-                    parent: angular.element(document.body),
-                    targetEvent: ev,
-                    clickOutsideToClose: true
-                })
-            }
         };
 
-        function DialogController($scope, statement, applicant) {
+        function DialogController($scope, $mdDialog, statement, applicant) {
             $scope.applicant = applicant;
             $scope.statement = statement;
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+            $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+            };
         }
         
 

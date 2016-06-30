@@ -1,4 +1,4 @@
-<div ng-controller="ProjectDetailCtrl">
+<div ng-controller="ProfileManageProjectCtrl">
 
 
 
@@ -37,19 +37,12 @@
 
 
     <div layout="row" layout-align="end center">
-    <md-card-actions ng-click="cancel()">
-        <md-button >Accept</md-button>
-    </md-card-actions>
+        <md-button ng-click="answer('ACCEPTED')">Accept</md-button>
 
-    <md-card-actions ng-click="cancel()">
-        <md-button >Reject</md-button>
-    </md-card-actions>
+        <md-button ng-click="answer('REJECTED')">Reject</md-button>
 
-    <md-card-actions  ng-click="cancel()">
-        <md-button >Close</md-button>
-    </md-card-actions>
+        <md-button ng-click="cancel()">Close</md-button>
 
-</div>
 </div>
 
 
