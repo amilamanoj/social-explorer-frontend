@@ -15,7 +15,7 @@ angular.module('myApp.profile')
             // most important thing to remember about templates.
             views: {
                 'content@profile': {
-                    templateUrl: 'views/rating/rating-write.html',
+                    templateUrl: 'views/rating/rating-read.html',
                     controller: 'ProfileRatingCtrl'
                 }
 
@@ -30,42 +30,93 @@ angular.module('myApp.profile')
 
     })
 
-app.controller('ProfileRatingCtrl', function($scope, $state, Profile, shareDataService,Project, $mdMedia, $mdDialog, currUser, Rating) {
-    $scope.proUser = shareDataService.getProducts();
-    console.log( "das"+$scope.proUser);
-    console.log( "die"+currUser.getUser()._id);
+app.controller('ProfileRatingCtrl', function($scope, $state, Profile, shareDataService,Project, $mdMedia, $mdDialog, currUser, $stateParams, Rating) {
 
-     $scope.loading = true;
-        $scope.ratings = Rating.query({ratedUser:$scope.proUser}, function () {
+    $scope.project = Project.get({projectId: $stateParams.projectId});
+    $scope.starRating2;
+    $scope.ratings;
+    $scope.project.$promise.then(function() {
+
+        console.log($scope.project);
+        $scope.loading = true;
+        $scope.ratings = Rating.query({ratedUser:$scope.project.user}, function () {
             $scope.loading = false;
             $scope.$parent.selectedIndex = 1;
-            // var varIndex;
-            //
-            //  var varIndex2;
-            // for (varIndex = 0; varIndex < $scope.ratings.length; ++varIndex) {
-            //     var appl = $scope.ratings[varIndex];
-            //     console.log( "apll"+appl.project);
-            //     Project.get({projectId:appl.project}, function (proj) {
-            //
-            //         var result = $scope.ratings.filter(function (obj) {
-            //             return obj.project == proj._id;
-            //         });
-            //         result[0].pTitle = proj.title;
-            //     });
-            // }
-            // for (varIndex2 = 0; varIndex2 < $scope.ratings.length; ++varIndex2) {
-            //     var user = $scope.ratings[varIndex2];
-            //     Profile.get({userId: user.createdUser}, function (userr) {
-            //         var result = $scope.ratings.filter(function (obj) {
-            //             return obj.createdUser == userr._id;
-            //         });
-            //         result[0].cUser = userr.username;
-            //     });
-          //  }
+            var varIndex;
+
+            var varIndex2;
+            for (varIndex = 0; varIndex < $scope.ratings.length; ++varIndex) {
+                var appl = $scope.ratings[varIndex];
+                Project.get({projectId:appl.project}, function (proj) {
+
+                    var result = $scope.ratings.filter(function (obj) {
+                        return obj.project == proj._id;
+                    });
+                    result[0].pTitle = proj.title;
+                });
+            }
+            for (varIndex2 = 0; varIndex2 < $scope.ratings.length; ++varIndex2) {
+                var user = $scope.ratings[varIndex2];
+                Profile.get({userId: user.createdUser}, function (userr) {
+                    var result = $scope.ratings.filter(function (obj) {
+                        return obj.createdUser == userr._id;
+                    });
+                    result[0].cUser = userr.username;
+                });
+            }
+
+        });
+
+        $scope.ratings.$promise.then(function() {
+            console.log($scope.ratings);
+            console.log("ersaerf"+( typeof $scope.ratings[0]=='undefined'));
+            $scope.isRated = typeof $scope.ratings[0]=='undefined';
+            $scope.starRating2=2;
 
         });
 
 
+    });
+
+    //$scope.starRating2=1;
+
+    // $scope.proUser = shareDataService.getProducts();
+    // console.log( "das"+$scope.proUser);
+    // console.log( "die"+currUser.getUser()._id);
+    //
+    //  $scope.loading = true;
+    //     $scope.ratings = Rating.query({ratedUser:$scope.proUser}, function () {
+    //         $scope.loading = false;
+    //         $scope.$parent.selectedIndex = 1;
+    //         var varIndex;
+    //
+    //          var varIndex2;
+    //         for (varIndex = 0; varIndex < $scope.ratings.length; ++varIndex) {
+    //             var appl = $scope.ratings[varIndex];
+    //             console.log( "apll"+appl.project);
+    //             Project.get({projectId:appl.project}, function (proj) {
+    //
+    //                 var result = $scope.ratings.filter(function (obj) {
+    //                     return obj.project == proj._id;
+    //                 });
+    //                 result[0].pTitle = proj.title;
+    //             });
+    //             console.log( $scope.ratings);
+    //         }
+    //         for (varIndex2 = 0; varIndex2 < $scope.ratings.length; ++varIndex2) {
+    //             var user = $scope.ratings[varIndex2];
+    //             Profile.get({userId: user.createdUser}, function (userr) {
+    //                 var result = $scope.ratings.filter(function (obj) {
+    //                     return obj.createdUser == userr._id;
+    //                 });
+    //                 result[0].cUser = userr.username;
+    //             });
+    //        }
+    //         console.log( "result"+$scope.ratings);
+    //
+    //     });
+
+   // $scope.starRating2 = 2;
 
 
     $scope.ratingDialog = function(ev) {
@@ -92,8 +143,8 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, shareDataS
     //$scope.project = Project.get({projectId: $stateParams.projectId});
 
 
-    $scope.starRating1 = 4;
-    $scope.starRating2 = 5;
+   // $scope.starRating1 = $scope.ratings[0].rateAvg;
+   //  $scope.starRating2 = 5;
 
 
     $scope.click1 = function (param) {
