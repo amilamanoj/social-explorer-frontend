@@ -18,10 +18,6 @@ angular.module('myApp.profile')
                     templateUrl: 'views/profile/manage-project/manage-project.html',
                     controller: 'ProfileManageProjectCtrl'
                 }
-            //     // 'outside@root': {
-            //     //     templateUrl: 'views/list/project-list-buttons.html',
-            //     //     controller: 'projectListButtonCtrl'
-            //     // }
             },
 
             ncyBreadcrumb: {
@@ -33,33 +29,33 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileManageProjectCtrl', function($scope, $state, Profile, Project, $mdDialog, $stateParams,
-                                                     $mdMedia, currUser, Application) {
-   
+    .controller('ProfileManageProjectCtrl', function ($scope, $state, Profile, Project, $mdDialog, $stateParams,
+                                                      $mdMedia, currUser, Application, $mdToast) {
+
         $scope.loading = true;
         $scope.project = Project.get({projectId: $stateParams.projectId});
-        $scope.applications = Application.query({project:$stateParams.projectId}, function() {
+        $scope.applications = Application.query({project: $stateParams.projectId}, function () {
             $scope.loading = false;
             var varIndex;
 
             for (varIndex = 0; varIndex < $scope.applications.length; ++varIndex) {
-                var appl =  $scope.applications[varIndex];
-                    Profile.get({userId:appl.applicant}, function (currApplicant)  {
-                        var result = $scope.applications.filter(function( obj ) {
-                            return obj.applicant == currApplicant._id;
-                        });
-                        result[0].pApplicant = currApplicant;
+                var appl = $scope.applications[varIndex];
+                Profile.get({userId: appl.applicant}, function (currApplicant) {
+                    var result = $scope.applications.filter(function (obj) {
+                        return obj.applicant == currApplicant._id;
                     });
+                    result[0].pApplicant = currApplicant;
+                });
 
             }
         });
 
-        $scope.user=Profile.get({userId:currUser.getUser()._id});
+        $scope.user = Profile.get({userId: currUser.getUser()._id});
 
 
-        $scope.lookAtProfile = function(ev, appl) {
+        $scope.lookAtProfile = function (ev, appl) {
 
-            if(currUser.loggedIn()) {
+            if (currUser.loggedIn()) {
 
                 $mdDialog.show({
 
@@ -78,6 +74,15 @@ angular.module('myApp.profile')
                         console.log(answer);
                         appl.status = answer;
                         appl.processedDate = new Date();
+                        appl.$update()
+                            .then(function () {
+                                // $rootScope.$broadcast('projectUpdate', $scope.newProject);
+                                showSimpleToast("Application updated!")
+                            }).catch(function (e) {
+                            console.log("error: " + e);
+                            showSimpleToast("Application update failed: " + e);
+
+                        });
                     }, function () {
                         $scope.status = 'You cancelled the dialog.';
                     });
@@ -93,17 +98,27 @@ angular.module('myApp.profile')
         function DialogController($scope, $mdDialog, statement, applicant) {
             $scope.applicant = applicant;
             $scope.statement = statement;
-            $scope.hide = function() {
+            $scope.hide = function () {
                 $mdDialog.hide();
             };
-            $scope.cancel = function() {
+            $scope.cancel = function () {
                 $mdDialog.cancel();
             };
-            $scope.answer = function(answer) {
+            $scope.answer = function (answer) {
                 $mdDialog.hide(answer);
             };
         }
-        
+
+        function showSimpleToast(txt){
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(txt)
+                    .position('bottom right')
+                    .hideDelay(3000)
+
+            );
+        }
+
 
     });
 
