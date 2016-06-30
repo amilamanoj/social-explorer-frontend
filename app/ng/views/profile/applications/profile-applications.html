@@ -16,7 +16,7 @@
                 <h3>{{ application.pTitle }}</h3>
                 <h4>Sent on: {{ application.createdDate }}</h4>
                 <h3>Status: <span class="{{ application.status }}">{{ application.status }}</span></h3>
-
+                <h4 ng-if="application.status!=='PENDING'">{{ application.status }} on {{ application.processedDate}}</h4>
             </div>
 
             <md-button flex class="md-secondary" ng-if="application.status==='PENDING'" ng-click="confirmAndDelete($event, application)">
