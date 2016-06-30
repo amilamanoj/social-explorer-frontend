@@ -36,7 +36,7 @@ angular.module('myApp.projects')
 
         }
     })
-    .controller('ProjectDetailCtrl', function($scope, Profile, Project, Application,$mdMedia, $mdToast, $mdDialog, $stateParams, $state, currUser) {
+    .controller('ProjectDetailCtrl', function($scope, Profile, Project, Application,$mdMedia, shareDataService,$mdToast, $mdDialog, $stateParams, $state, currUser) {
 
         $scope.project = Project.get({projectId: $stateParams.projectId});
 
@@ -53,6 +53,8 @@ angular.module('myApp.projects')
             Profile.get({userId: $scope.project.user}, function (pUser) {
                 $scope.projectUser = pUser;
             });
+            $scope.functionForInsert($scope.project.user);
+
         });
 
 
@@ -103,30 +105,6 @@ angular.module('myApp.projects')
                 }
         };
 
-        // $scope.lookAtProfile = function(ev, user) { //just a preview example for a pop up window
-        //     // Appending dialog to document.body to cover sidenav in docs app
-        //     var confirm = $mdDialog.prompt()
-        //         .title('Profile of host:')
-        //         .textContent('Name: ')
-        //
-        //         // .textContent('Name: "' + user.username + '"')
-        //         .placeholder('statement')
-        //         .ariaLabel('statement')
-        //         // .initialValue('your text there')
-        //         .targetEvent(ev)
-        //         .ok('Apply!')
-        //          .cancel('Back');
-        //     $mdDialog.show(confirm).then(function(result) {
-        //         $scope.status = 'You applied with statement ' + result + '.';
-        //         sendApplication(result);
-        //     },
-        //         function() {
-        //         $scope.status = 'You canceled.';
-        //     });
-        // };
-
-
-
 
         $scope.lookAtProfile = function(ev) {
 
@@ -140,17 +118,6 @@ angular.module('myApp.projects')
                         clickOutsideToClose: true
 
                     })
-
-                    .then(function (answer) {
-                        $scope.status = 'You said the information was "' + answer + '".';
-                    }, function () {
-                        $scope.status = 'You cancelled the dialog.';
-                    });
-                $scope.$watch(function () {
-                    return $mdMedia('xs') || $mdMedia('sm');
-                }, function (wantsFullScreen) {
-                    $scope.customFullscreen = (wantsFullScreen === true);
-                });
             }
 
             else{
@@ -229,6 +196,10 @@ angular.module('myApp.projects')
             $mdDialog.cancel();
         };
 
+        $scope.functionForInsert = function(test){
+            shareDataService.addProduct(test);
+        };
+
 
         function showSimpleToast(txt) {
             $mdToast.show(
@@ -261,3 +232,22 @@ angular.module('myApp.projects')
 
 
     });
+
+app.service('shareDataService', function() {
+    var productList = "";
+
+    var addProduct = function(newObj) {
+        productList = "";
+        productList=newObj;
+    };
+
+    var getProducts = function(callback){
+        return productList;
+    };
+
+    return {
+        addProduct: addProduct,
+        getProducts: getProducts
+    };
+
+});

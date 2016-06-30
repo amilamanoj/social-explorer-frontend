@@ -16,10 +16,14 @@
                 <h3>{{ application.pTitle }}</h3>
                 <h4>Sent on: {{ application.createdDate }}</h4>
                 <h3>Status: <span class="{{ application.status }}">{{ application.status }}</span></h3>
+
             </div>
 
             <md-button class="md-secondary" ng-click="confirmAndDelete($event, application)" style="padding-bottom: 24px">
                 <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
+            </md-button>
+            <md-button class="md-secondary" ng-click="rating($event); functionForInsert(application.project, application.applicant, application.host)" style="padding-bottom: 24px; margin-right:60px" >
+               Rate
             </md-button>
 
 

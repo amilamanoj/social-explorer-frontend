@@ -33,7 +33,7 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileApplicationsCtrl', function($scope, $state, Profile, Project, $mdDialog, currUser, Application) {
+    .controller('ProfileApplicationsCtrl', function(shareDataServiceRating,$scope, $state, Profile, Project, $mdDialog, currUser, Application) {
    
         $scope.loading = true;
         $scope.applications = Application.query({applicant:currUser.getUser()._id}, function() {
@@ -75,7 +75,48 @@ angular.module('myApp.profile')
                 $scope.status = 'Canceled.';
             });
         };
+
+        $scope.rating = function(ev, application) {
+
+                $mdDialog.show({
+
+                    templateUrl: 'views/rating/rating-write.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true
+                })
+
+
+            };
+
+
+        $scope.functionForInsert = function( project, ratedUser,host){
+
+            shareDataServiceRating.addProduct( project,ratedUser, host);
+        };
+
         
 
     });
+
+app.service('shareDataServiceRating', function() {
+    var productList = [];
+
+    var addProduct = function(project,ratedUser, host) {
+        productList = [];
+        productList.push(project);
+        productList.push(ratedUser);
+        productList.push(host);
+    };
+
+    var getProducts = function(){
+        return productList;
+    };
+
+    return {
+        addProduct: addProduct,
+        getProducts: getProducts
+    };
+
+});
 

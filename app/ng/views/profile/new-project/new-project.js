@@ -37,7 +37,7 @@ angular.module('myApp.profile')
 
         $scope.saveProject = saveProject;
         $scope.cancel = cancel;
-
+        
         function saveProject(){
             console.log("create project");
             $scope.newProject = new Project();
