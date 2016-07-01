@@ -2,8 +2,8 @@
 
 angular.module('myApp.profile')
 
-    .constant('profileRating', {
-        name: 'profile.rating',
+    .constant('profileRatingAll', {
+        name: 'profile.ratingAll',
         options: {
 
 
@@ -15,8 +15,8 @@ angular.module('myApp.profile')
             // most important thing to remember about templates.
             views: {
                 'content@profile': {
-                    templateUrl: 'views/rating/rating-read.html',
-                    controller: 'ProfileRatingCtrl'
+                    templateUrl: 'views/profile/rating-all.html',
+                    controller: 'ProfileRatingAllCtrl'
                 }
 
             },
@@ -30,7 +30,7 @@ angular.module('myApp.profile')
 
     })
 
-app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shareDataService,Project, $mdMedia, $mdDialog, currUser, $stateParams, Rating) {
+app.controller('ProfileRatingAllCtrl', function($scope, $state, Profile, shareDataService,Project, $mdMedia, $mdDialog, currUser, $stateParams, Rating) {
 
     $scope.project = Project.get({projectId: $stateParams.projectId});
     $scope.starRating2;
@@ -71,9 +71,7 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
             console.log($scope.ratings);
             console.log("ersaerf"+( typeof $scope.ratings[0]=='undefined'));
             $scope.isRated = typeof $scope.ratings[0]=='undefined';
-            $scope.$watch('starRating', function() {
-                share.rating = $scope.ratings[0].rateAvg;
-            });
+            $scope.starRating2=2;
 
         });
 
@@ -83,41 +81,41 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
     $scope.ratingDialog = function(ev) {
 
 
-            $mdDialog.show({
+        $mdDialog.show({
 
-                    templateUrl: 'views/profile/ratings-all.html',
-                    parent: angular.element(document.body),
-                    targetEvent: ev,
-                    clickOutsideToClose: true
-                })
+            templateUrl: 'views/profile/ratings-all.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        })
     };
-    // $scope.click1 = function (param) {
-    //     console.log('Click(' + param + ')');
-    // };
-    //
-    // $scope.mouseHover1 = function (param) {
-    //     console.log('mouseHover(' + param + ')');
-    //     $scope.hoverRating1 = param;
-    // };
-    //
-    // $scope.mouseLeave1 = function (param) {
-    //     console.log('mouseLeave(' + param + ')');
-    //     $scope.hoverRating1 = param + '*';
-    // };
-    //
-    // $scope.click2 = function (param) {
-    //     console.log('Click');
-    // };
-    //
-    // $scope.mouseHover2 = function (param) {
-    //     console.log('mouseHover(' + param + ')');
-    //     $scope.hoverRating1 = param;
-    // };
-    //
-    // $scope.mouseLeave2 = function (param) {
-    //     console.log('mouseLeave(' + param + ')');
-    //     $scope.hoverRating2 = param + '*';
-    // };
+    $scope.click1 = function (param) {
+        console.log('Click(' + param + ')');
+    };
+
+    $scope.mouseHover1 = function (param) {
+        console.log('mouseHover(' + param + ')');
+        $scope.hoverRating1 = param;
+    };
+
+    $scope.mouseLeave1 = function (param) {
+        console.log('mouseLeave(' + param + ')');
+        $scope.hoverRating1 = param + '*';
+    };
+
+    $scope.click2 = function (param) {
+        console.log('Click');
+    };
+
+    $scope.mouseHover2 = function (param) {
+        console.log('mouseHover(' + param + ')');
+        $scope.hoverRating1 = param;
+    };
+
+    $scope.mouseLeave2 = function (param) {
+        console.log('mouseLeave(' + param + ')');
+        $scope.hoverRating2 = param + '*';
+    };
 
 
 
@@ -125,14 +123,7 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
 
 });
 
-app.factory('share', function() {
-    var obj = {
-        rating: 0
-    }
-    return obj;
-});
-
-app.directive('starRating', function () {
+app.directive('starRating2', function () {
     return {
         scope: {
             rating: '=',
@@ -154,47 +145,44 @@ app.directive('starRating', function () {
                 attrs.maxRating = '5';
             };
         },
-        controller: function ($scope, $element, $attrs, share) {
+        controller: function ($scope, $element, $attrs) {
             $scope.maxRatings = [];
 
-            $scope.rating = share.rating;
-            $scope.$watch('rating', function() {
-                $scope._rating = share.rating;
-            });
             for (var i = 1; i <= $scope.maxRating; i++) {
                 $scope.maxRatings.push({});
             };
 
-            // $scope._rating = share.rating;
-            // $scope.isolatedClick = function (param) {
-            //     if ($scope.readOnly == 'true') return;
+            $scope._rating = $scope.rating;
 
-            //     $scope.rating = $scope._rating = param;
-            //     $scope.hoverValue = 0;
-            //     $scope.click({
-            //         param: param
-            //     });
-            // };
-            //
-            // $scope.isolatedMouseHover = function (param) {
-            //     if ($scope.readOnly == 'true') return;
-            //
-            //     $scope._rating = 0;
-            //     $scope.hoverValue = param;
-            //     $scope.mouseHover({
-            //         param: param
-            //     });
-            // };
-            //
-            // $scope.isolatedMouseLeave = function (param) {
-            //     if ($scope.readOnly == 'true') return;
-            //
-            //     $scope._rating = $scope.rating;
-            //     $scope.hoverValue = 0;
-            //     $scope.mouseLeave({
-            //         param: param
-            //     });
-            // };
+            $scope.isolatedClick = function (param) {
+                if ($scope.readOnly == 'true') return;
+
+                $scope.rating = $scope._rating = param;
+                $scope.hoverValue = 0;
+                $scope.click({
+                    param: param
+                });
+            };
+
+            $scope.isolatedMouseHover = function (param) {
+                if ($scope.readOnly == 'true') return;
+
+                $scope._rating = 0;
+                $scope.hoverValue = param;
+                $scope.mouseHover({
+                    param: param
+                });
+            };
+
+            $scope.isolatedMouseLeave = function (param) {
+                if ($scope.readOnly == 'true') return;
+
+                $scope._rating = $scope.rating;
+                $scope.hoverValue = 0;
+                $scope.mouseLeave({
+                    param: param
+                });
+            };
 
 
         }
