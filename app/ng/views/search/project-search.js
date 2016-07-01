@@ -32,13 +32,24 @@ angular.module('myApp.projects')
         $scope.projects = Project.query();
         $scope.goToProject = goToProject;
 
-        $scope.$on('projectCreated', function(ev, project){
-            $scope.projects.push(project);
-        });
+        function searchProjectByFromDate(){
+            console.log("searching for a project by the given starting date");
+        }
+
+        function searchProjectByToDate(){
+            console.log("searching for a project by the given ending date");
+        }
+
+        function searchProjectByHost(){
+            console.log("searching for a project by the host");
+        }
+
+        function searchProjectByCountry(){
+            console.log("searching for a project by country");
+        }
 
         function goToProject(proj){
             console.log("going to project");
             $state.go('projects.detail', {'projectId': proj._id });
         }
-
     });
