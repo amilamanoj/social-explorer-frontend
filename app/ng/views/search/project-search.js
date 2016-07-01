@@ -31,21 +31,20 @@ angular.module('myApp.projects')
     .controller('ProjectSearchCtrl', function($scope, $state, Project) {
         $scope.projects = Project.query();
         $scope.goToProject = goToProject;
+        //$scope.searchProject = searchProject;
+        $scope.selectedFromDate = new Date();
+        $scope.selectedToDate = new Date();
 
-        function searchProjectByFromDate(){
-            console.log("searching for a project by the given starting date");
-        }
+        //$scope.project = Project.get({projectId: $stateParams.projectId});
 
-        function searchProjectByToDate(){
-            console.log("searching for a project by the given ending date");
-        }
+        function searchProject() {
+            //get the fromDate user has picked in the date picker
 
-        function searchProjectByHost(){
-            console.log("searching for a project by the host");
-        }
+            //compare this date with the fromDates of the project base
 
-        function searchProjectByCountry(){
-            console.log("searching for a project by country");
+            //show results
+
+            //do the same for toDate, host and country too
         }
 
         function goToProject(proj){
