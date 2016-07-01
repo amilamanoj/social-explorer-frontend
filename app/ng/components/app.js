@@ -51,7 +51,7 @@ var app = angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile
 
         // color and theme of the toolbar
         $mdThemingProvider.theme('default')
-            .primaryPalette('orange')
+            .primaryPalette('deep-orange')
             .accentPalette('amber')
 
     });

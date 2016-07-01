@@ -1,9 +1,9 @@
-<md-toolbar layout="row" layout-align="center center" class="md-tall" style="background-color: white;">
+<!--<md-toolbar layout="row" layout-align="center center" class="md-tall" style="background-color: white;">-->
 
-    <img src="logo_updated.png" ng-click="goToHome()" width="240" height="120"/>
-    <img ng-src="{{image}}"/>
+    <!--<img src="logo_updated.png" ng-click="goToHome()" width="240" height="120"/>-->
+    <!--<img ng-src="{{image}}"/>-->
 
-</md-toolbar>
+<!--</md-toolbar>-->
 
 <md-toolbar ng-if="!loggedIn" layout="row" layout-align="space-between center">
 
@@ -11,7 +11,10 @@
     <!--The left side-->
     <span> <md-button ng-click="goToSearch()" aria-label="Search for a project!"> <md-icon md-svg-icon="action:ic_search_24px"></md-icon> Search for a project! </md-button></span>
 
-    <span flex></span>
+    <span layout="row">
+    <img  style="margin-top: 12px" src="bubble2.png" ng-click="goToHome()" width="50" height="40" layout-align="center center"/>
+<p layout-align="center center"  ng-click="goToHome()"><strong>Social Explorer</strong></p>
+</span>
 
     <!--The right side-->
     <span>
@@ -26,10 +29,16 @@
 <!-- logged in -->
 <!--The left side-->
 
+    <span> <md-button  ng-if="loggedIn && !user.host" ng-click="goToSearch()" aria-label="Search for a project!"> <md-icon md-svg-icon="action:ic_search_24px"></md-icon> Search for a project! </md-button></span>
 
-    <span> <md-button layout-align="center center" ng-if="loggedIn && !user.host" ng-click="goToSearch()" aria-label="Search for a project!"> <md-icon md-svg-icon="action:ic_search_24px"></md-icon> Search for a project! </md-button></span>
+<span layout="row">
+    <img  style="margin-top: 12px" src="bubble2.png" ng-click="goToHome()" width="50" height="40" layout-align="center center"/>
+<p layout-align="center center"  ng-click="goToHome()"><strong>Social Explorer</strong></p>
+</span>
 
-<span flex></span>
+
+
+
 
 <!--The right side-->
 <span>
