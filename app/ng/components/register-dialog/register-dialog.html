@@ -25,14 +25,15 @@
         </md-input-container>
         <md-input-container class="md-block">
             <label>Password</label>
-            <input type="password" required name="password" ng-model="pwd">
+            <input type="password" required name="password" id="password" ng-model="pwd">
             <div ng-messages="registerForm.password.$error">
                 <div ng-message="required">Password is required.</div>
             </div>
         </md-input-container>
         <md-input-container class="md-block">
             <label>Repeat password</label>
-            <input type="password" name="passwordConfirm" required compare-to="pwd" ng-model="pwdConfirm">
+            <input type="password" name="passwordConfirm" id="passwordConfirm" required onkeyup="checkPass(); return false;" ng-model="pwdConfirm">
+            <span id="confirmMessage" class="confirmMessage"></span>
             <div ng-messages="registerForm.passwordConfirm.$error">
                 <div ng-message="required">Password confirmation required.</div>
                 <div ng-message="compareTo">Passwords must match.</div>
