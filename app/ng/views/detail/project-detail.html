@@ -68,8 +68,8 @@
 
         </div>
         <div layout="row" layout-margin="10%">
-                <div><strong>Starting Date:&nbsp;</strong> {{project.fromDate}}&nbsp;</div>
-                <div><strong>Ending Date:&nbsp;</strong> {{project.toDate}}&nbsp;</div>
+                <div><strong>Starting Date:&nbsp;</strong> {{project.fromDate | date:"MM/dd/yyyy"}}&nbsp;</div>
+                <div><strong>Ending Date:&nbsp;</strong> {{project.toDate | date:"MM/dd/yyyy"}}&nbsp;</div>
         </div>
 
 </md-card>
