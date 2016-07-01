@@ -1,11 +1,11 @@
 <div layout="column" layout-align="center center">
     <!--<md-card mv-project-card class="mv-card" project="project" ng-repeat="project in projects"></md-card>-->
     <p ng-if="!loggedIn" flex>
-        <h1 align="center">
+        <h2 align="center">
         Travel, help and connect.
         <br>
         Be a Social Explorer and make lives better.
-        </h1>
+        </h2>
     </p>
 
     <ul rn-carousel flex rn-carousel-controls rn-carousel-index="carouselIndex" rn-carousel-auto-slide="" class="carousel1" >
@@ -14,7 +14,7 @@
 
             <div ng-style="{'background-image': 'url(data:image/png;base64,{{project.img}})'}" class="bgimage">
                 <div class="carousel-caption">
-                    <h2>{{ project.title }}</h2>
+                    <h1>{{ project.title }}</h1>
                 </div>
             </div>
 
@@ -22,28 +22,26 @@
 
     </ul>
 
-    <md-toolbar class="md-warn md-hue-5">
-        <div class="md-toolbar-tools" layout-align="center center">
-            <h2 class="md-flex">What do we offer?</h2>
-        </div>
-    </md-toolbar>
+    <p></p>
+    <p></p>
 
-    <md-content  layout-padding="">
+
+    <h1 layout-align="center center" class="md-toolbar-tools" flex
+        style="background-color: rgba(255,200,128,0.6)">What do we offer? </h1>
+
         <p>We offer you the possibility to get to know about our world and people that live in it - and, to make a change.</p>
 
         <p>
 
         </p>
 
-    </md-content>
 
-    <md-toolbar class="md-warn md-hue-1">
+    <md-toolbar class="md-warn md-hue-3">
         <div class="md-toolbar-tools" layout-align="center center">
             <h2 class="md-flex">Our mission</h2>
         </div>
     </md-toolbar>
 
-    <md-content flex="" layout-padding="">
         <p>We offer you the possibility to get to know about our world and people that live in it - and, to make a change.</p>
 
         <p>
@@ -51,15 +49,13 @@
         </p>
 
 
-    </md-content>
 
-    <md-toolbar class="md-warn md-hue-3">
+    <md-toolbar class="md-warn md-hue-1">
         <div class="md-toolbar-tools" layout-align="center center">
             <h2 class="md-flex">Our vision</h2>
         </div>
     </md-toolbar>
 
-    <md-content flex="" layout-padding="">
         <p>We offer you the possibility to get to know about our world and people that live in it - and, to make a change.</p>
 
         <p>
@@ -67,6 +63,5 @@
         </p>
 
 
-    </md-content>
 </div>
 
