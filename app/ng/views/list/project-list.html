@@ -1,12 +1,7 @@
 <div layout="column" layout-align="center center">
     <!--<md-card mv-project-card class="mv-card" project="project" ng-repeat="project in projects"></md-card>-->
-    <p ng-if="!loggedIn" flex>
-        <h2 align="center">
-        Travel, help and connect.
-        <br>
-        Be a Social Explorer and make lives better.
-        </h2>
-    </p>
+
+    <p></p>
 
     <ul rn-carousel flex rn-carousel-controls rn-carousel-index="carouselIndex" rn-carousel-auto-slide="" class="carousel1" >
 
@@ -23,20 +18,15 @@
     </ul>
 
     <p></p>
+
+    <h1 layout="row" layout-align="center center" class="md-toolbar-tools" flex >Travel, help and connect.
+        Be a Social Explorer and make lives better.
+    </h1>
+
     <p></p>
 
+
     <div layout="row" layout-align="space-around stretch">
-        <div>
-
-            <md-toolbar class="md-warn md-hue-2">
-                <div class="md-toolbar-tools" layout-align="center center">
-                    <h2 class="md-flex">What do we offer?</h2>
-                </div>
-            </md-toolbar>
-                <p>We offer you the possibility to get to know about our world and people that live in it - and, to make a change.</p>
-
-                <p>Register as a Social Explorer, take part in projects with a social mission and, create projects that touch peoples' lives. </p>
-        </div>
 
         <div>
             <md-toolbar class="md-warn md-hue-3">
@@ -44,10 +34,23 @@
                     <h2 class="md-flex">Our mission</h2>
                 </div>
             </md-toolbar>
-
+            <md-card style="background-color: rgba(255, 255, 255, 0.5)" layout-align="center center">
                 <p>Our mission is to make the world a better place. </p>
-
                 <p>We envision a world that is more connected - more than just digitally. We try to redefine what <i>social</i> means with our services. </p>
+            </md-card>
+        </div>
+
+        <div>
+            <md-toolbar class="md-warn md-hue-2">
+                <div class="md-toolbar-tools" layout-align="center center">
+                    <h2 class="md-flex">What do we offer?</h2>
+                </div>
+            </md-toolbar>
+            <md-card style="background-color: rgba(255, 255, 255, 0.5)" >
+                <p>We offer you the possibility to get to know about our world and people that live in it - and, to make a change.</p>
+                <p>Register as a Social Explorer, take part in projects with a social mission and, create projects that touch peoples' lives. </p>
+            </md-card>
+
         </div>
 
         <div>
@@ -56,10 +59,10 @@
                     <h2 class="md-flex">Our vision</h2>
                 </div>
             </md-toolbar>
-
+            <md-card style="background-color: rgba(255, 255, 255, 0.5)" >
                 <p>Our vision is to help shape a new generation, or even a society that is well-aware of the world we live in, and think more globally.</p>
-
                 <p>Because we can only exist together and need to support each other. </p>
+            </md-card>
         </div>
 
     </div>
