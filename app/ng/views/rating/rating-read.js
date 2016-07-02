@@ -71,10 +71,11 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
             console.log($scope.ratings);
             console.log("ersaerf"+( typeof $scope.ratings[0]=='undefined'));
             $scope.isRated = typeof $scope.ratings[0]=='undefined';
-            $scope.$watch('starRating', function() {
-                share.rating = $scope.ratings[0].rateAvg;
-            });
-
+            if (typeof $scope.ratings[0]!='undefined') {
+                $scope.$watch('starRating', function () {
+                    share.rating = $scope.ratings[0].rateAvg;
+                });
+            }
         });
 
 
