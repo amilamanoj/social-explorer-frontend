@@ -1,8 +1,9 @@
 <div ng-controller="ProfileRatingCtrl">
 
     <div ng-if="!isRated">
-    <div star-rating rating="starRating2" read-only="true" max-rating="5" ng-click="ratingDialog($event)" ></div>
+    <div star-rating read-only="true" max-rating="5"  ></div>
     <div> <span class="label label-primary"> Rating: {{ratings[0].rateAvg}}</span>
+        <md-button ng-click="ratingDialog($event)">See all ratings</md-button>
 </div>
 
     </div>
