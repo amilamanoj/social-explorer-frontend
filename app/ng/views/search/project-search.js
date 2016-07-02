@@ -33,7 +33,9 @@ angular.module('myApp.projects')
         $scope.goToProject = goToProject;
         //$scope.searchProject = searchProject;
         $scope.selectedFromDate = new Date();
-        $scope.selectedToDate = new Date();
+        var selToDate = new Date();
+        selToDate.setFullYear(selToDate.getFullYear() + 2);
+        $scope.selectedToDate = selToDate;
         $scope.countries = CountryService.countries;
 
         $scope.dateRangeFilter = function (project) {
