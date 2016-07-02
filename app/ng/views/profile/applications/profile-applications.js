@@ -90,8 +90,8 @@ angular.module('myApp.profile')
             };
 
 
-        $scope.functionForInsert = function( project, ratedUser,host){
-            shareDataServiceRating.addProduct( project,ratedUser, host);
+        $scope.functionForInsert = function( project, ratedUser,host, id){
+            shareDataServiceRating.addProduct( project,ratedUser, host, id);
         };
 
         
@@ -101,11 +101,13 @@ angular.module('myApp.profile')
 app.service('shareDataServiceRating', function() {
     var productList = [];
 
-    var addProduct = function(project,ratedUser, host) {
+    var addProduct = function(project,ratedUser, host, idOfApp) {
         productList = [];
         productList.push(project);
         productList.push(ratedUser);
         productList.push(host);
+        productList.push(idOfApp);
+        console.log(idOfApp);
     };
 
     var getProducts = function(){

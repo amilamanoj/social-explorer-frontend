@@ -30,14 +30,14 @@ angular.module('myApp.profile')
 
     })
 
-app.controller('ProfileWriteRatingCtrl', function(shareDataServiceRating,$scope, $state, $mdToast,Profile,$rootScope, shareDataService,Project, $mdMedia, $mdDialog, currUser, Rating, $stateParams) {
+app.controller('ProfileWriteRatingCtrl', function(shareDataServiceRating,$scope, Application, $state, $mdToast,Profile,$rootScope, shareDataService,Project, $mdMedia, $mdDialog, currUser, Rating, $stateParams) {
 
     $scope.aplication = shareDataServiceRating.getProducts();
+
      $scope.saveRating = saveRating;
-    // $scope.cancel = cancel;
+
 
     function saveRating(){
-
         $scope.newRating = new Rating();
         $scope.newRating.createdUser = currUser.getUser()._id;
         $scope.newRating.rate = this.starRating1;
@@ -61,11 +61,28 @@ app.controller('ProfileWriteRatingCtrl', function(shareDataServiceRating,$scope,
                $rootScope.$broadcast('ratingCreated', $scope.newRating);
                  showSimpleToast("Rating created!");
                 $mdDialog.cancel();
+                location.reload();
             }).catch(function(e){
              console.log("error: " + e);
              showSimpleToast("Project creation failed: " + e);
 
          });
+
+        //Update the status after rating to 'RATED'
+        $scope.aplicationUpdate=new Application();
+        $scope.aplicationUpdate._id = $scope.aplication[3]; // set ID
+        $scope.aplicationUpdate.status= "RATED";
+        $scope.aplicationUpdate.processedDate= new Date();
+
+
+        $scope.aplicationUpdate.$update()
+            .then(function () {
+                showSimpleToast("Application updated!")
+            }).catch(function (e) {
+            console.log("error: " + e);
+            showSimpleToast("Application update failed: " + e);
+
+        });
     }
 
     $scope.cancel = function() {
