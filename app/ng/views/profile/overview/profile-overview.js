@@ -104,12 +104,6 @@ angular.module('myApp.profile')
                 })
             }
         
-        $scope.goToEdit = function(ev, user) {
-            console.log("going to edit profile");
-            $state.go('profile.settings', {'userId': user._id });
-            
-            
-        }
 
         $scope.cancel = function() {
             $mdDialog.cancel();
