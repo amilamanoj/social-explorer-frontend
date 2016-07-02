@@ -37,6 +37,7 @@ angular.module('myApp.projects')
         selToDate.setFullYear(selToDate.getFullYear() + 2);
         $scope.selectedToDate = selToDate;
         $scope.countries = CountryService.countries;
+        $scope.goToHome = goToHome;
 
         $scope.dateRangeFilter = function (project) {
 
@@ -49,5 +50,10 @@ angular.module('myApp.projects')
         function goToProject(proj){
             console.log("going to project");
             $state.go('projects.detail', {'projectId': proj._id });
+        }
+
+        function goToHome(){
+            console.log("going to home");
+            $state.reload();
         }
     });
