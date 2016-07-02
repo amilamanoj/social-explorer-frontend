@@ -44,7 +44,7 @@ angular.module('myApp.profile')
 
         $scope.ratings = Rating.query({ratedUser:currUser.getUser()._id}, function () {
             $scope.loading = false;
-            $scope.$parent.selectedIndex = 1;
+            $scope.$parent.selectedIndex = 0;
             var varIndex;
 
             var varIndex2;

@@ -41,29 +41,6 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
         $scope.loading = true;
         $scope.ratings = Rating.query({ratedUser:$scope.project.user}, function () {
             $scope.loading = false;
-            $scope.$parent.selectedIndex = 1;
-            var varIndex;
-
-            var varIndex2;
-            for (varIndex = 0; varIndex < $scope.ratings.length; ++varIndex) {
-                var appl = $scope.ratings[varIndex];
-                Project.get({projectId:appl.project}, function (proj) {
-
-                    var result = $scope.ratings.filter(function (obj) {
-                        return obj.project == proj._id;
-                    });
-                    result[0].pTitle = proj.title;
-                });
-            }
-            for (varIndex2 = 0; varIndex2 < $scope.ratings.length; ++varIndex2) {
-                var user = $scope.ratings[varIndex2];
-                Profile.get({userId: user.createdUser}, function (userr) {
-                    var result = $scope.ratings.filter(function (obj) {
-                        return obj.createdUser == userr._id;
-                    });
-                    result[0].cUser = userr.username;
-                });
-            }
 
         });
 
