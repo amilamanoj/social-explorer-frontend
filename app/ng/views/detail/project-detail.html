@@ -35,7 +35,7 @@
         <!--<div layout="row" layout-margin="10%"> Rating: {{project.mpaa_rating}}</div>-->
 <br>
 
-        <div flex-xs flex-gt-xs="100" layout="column" >
+        <ct, flex-xs flex-gt-xs="100" layout="column" >
             <md-card style="background-color: rgba(255, 255, 255, 0.5)">
                 <md-card-title>
                     <md-card-title-text>
@@ -72,20 +72,27 @@
         </div>
 
 </md-card>
-            <p layout="row" layout-align="center center">
-                <md-button   class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply">
+            <div layout="row" layout-align="center center">
+
+
+                <md-button   class=" md-raised" ng-click="applyForProject($event)" ng-if="alreadyApply">
+                    <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
+                    Go to your application
+                </md-button>
+                <div ng-if="!alreadyApply">
+                <md-button   class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply" >
                     <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
                     Ask to participate!
-                </md-button>        </p>
+                </md-button>      </div> </div>
             <!-- IF own project, then one can edit it-->
 
-            <p layout="row" layout-align="center center">
+            <div layout="row" layout-align="center center">
             <md-button class=" md-raised" ui-sref="profile.editproj({projectId: project._id })"  ng-if="!canApply" layout-align="end center">
 
                 <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
                 Edit
             </md-button>
-            </p>
+            </div>
     </div>
 
         </div>
