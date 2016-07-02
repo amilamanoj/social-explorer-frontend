@@ -42,8 +42,8 @@
 
 <!--The right side-->
 <span>
-      <md-button  ng-click="goToProfile()" aria-label="My profile"> Hello, {{user.username}} </md-button>
-    <md-button ng-if="loggedIn" ng-click="logout()" aria-label="Log out"> Log out </md-button>
+      <md-button  ng-click="goToProfile()" aria-label="My profile"> <md-icon md-svg-icon="action:ic_account_circle_24px"></md-icon> Hello, {{user.username}} </md-button>
+    <md-button ng-if="loggedIn" ng-click="logout()" aria-label="Log out"> <md-icon md-svg-icon="content:ic_forward_24px"></md-icon>Log out </md-button>
     </span>
 
 </md-toolbar>
