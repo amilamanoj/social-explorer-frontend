@@ -9,7 +9,7 @@
         <img id="mySpinner" src="ripple.gif" ng-show="loading" />
 
         <md-list-item class="md-3-line" ng-repeat="project in projects | filter: userFilter"
-                      ui-sref="projects.detail({projectId: project._id })">
+                      ng-click="goToProject(project)" >
 
             <img data-ng-src="data:image/png;base64,{{project.img}}" class="md-avatar" />
 
