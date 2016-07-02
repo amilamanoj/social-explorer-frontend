@@ -36,15 +36,29 @@ angular.module('myApp.projects')
 
     })
 
-    .controller('ProjectListCtrl', function($scope, Project) {
+    .controller('ProjectListCtrl', function($scope, Project, $mdDialog) {
         $scope.projects = Project.query();
 
         $scope.$on('projectCreated', function(ev, project){
             $scope.projects.push(project);
         });
+        
 
+        $scope.donate = function(ev) {
+
+            $mdDialog.show({
+
+                templateUrl: 'views/list/donation.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true
+
+            })
+        }
 
     });
+
+
 
     // .controller('projectListButtonCtrl', function($scope, $mdMedia, $mdDialog, $mdToast, currUser){
     //
