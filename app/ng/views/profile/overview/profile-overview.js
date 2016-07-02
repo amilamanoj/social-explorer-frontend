@@ -81,6 +81,16 @@ angular.module('myApp.profile')
             }
         });
 
+        $scope.ratingDialog = function(ev) {
+            $mdDialog.show({
+
+                templateUrl: 'views/profile/ratings-all-own.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true
+            })
+        };
+
         $scope.goToCreateProject = goToCreateProject;
 
         function goToCreateProject(){
