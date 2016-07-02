@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('myApp.applications', [])
+angular.module('myApp.countries', [])
 
-    .factory('CountryService', function(BASEURL, $resource) {
+    .factory('CountryService', function() {
         return  {
             countries : [
             "Afghanistan",
