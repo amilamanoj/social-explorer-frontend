@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var app = angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile', 'myApp.applications','myApp.rating',
+var app = angular.module('myApp', ['ui.router', 'myApp.projects', 'myApp.profile', 'myApp.applications','myApp.rating', 'myApp.countries',
     'templates', 'ncy-angular-breadcrumb', 'ngMaterial', 'ngMessages','angular-carousel', 'naif.base64'])
 
     .config(function($stateProvider, $urlRouterProvider, $mdIconProvider, $resourceProvider, $httpProvider, $breadcrumbProvider, $mdThemingProvider) {

@@ -31,10 +31,9 @@ angular.module('myApp.profile')
     })
 
 app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shareDataService,Project, $mdMedia, $mdDialog, currUser, $stateParams, Rating) {
-
+    //get project of the current site
     $scope.project = Project.get({projectId: $stateParams.projectId});
-    $scope.starRating2;
-    $scope.ratings;
+    // when received the project, get all ratings from the user of this project
     $scope.project.$promise.then(function() {
 
         console.log($scope.project);
@@ -43,11 +42,10 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
             $scope.loading = false;
 
         });
-
+    // when received the ratings, set the stars to the average of the ratings (only when there are ratings)
         $scope.ratings.$promise.then(function() {
-            console.log($scope.ratings);
-            console.log("ersaerf"+( typeof $scope.ratings[0]=='undefined'));
             $scope.isRated = typeof $scope.ratings[0]=='undefined';
+            // set str
             if (typeof $scope.ratings[0]!='undefined') {
                 $scope.$watch('starRating', function () {
                     share.rating = $scope.ratings[0].rateAvg;
@@ -57,10 +55,8 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
 
 
     });
-
+    // show all ratings
     $scope.ratingDialog = function(ev) {
-
-
             $mdDialog.show({
 
                     templateUrl: 'views/profile/ratings-all.html',
@@ -69,37 +65,6 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
                     clickOutsideToClose: true
                 })
     };
-    // $scope.click1 = function (param) {
-    //     console.log('Click(' + param + ')');
-    // };
-    //
-    // $scope.mouseHover1 = function (param) {
-    //     console.log('mouseHover(' + param + ')');
-    //     $scope.hoverRating1 = param;
-    // };
-    //
-    // $scope.mouseLeave1 = function (param) {
-    //     console.log('mouseLeave(' + param + ')');
-    //     $scope.hoverRating1 = param + '*';
-    // };
-    //
-    // $scope.click2 = function (param) {
-    //     console.log('Click');
-    // };
-    //
-    // $scope.mouseHover2 = function (param) {
-    //     console.log('mouseHover(' + param + ')');
-    //     $scope.hoverRating1 = param;
-    // };
-    //
-    // $scope.mouseLeave2 = function (param) {
-    //     console.log('mouseLeave(' + param + ')');
-    //     $scope.hoverRating2 = param + '*';
-    // };
-
-
-
-
 
 });
 
@@ -135,7 +100,7 @@ app.directive('starRating', function () {
         controller: function ($scope, $element, $attrs, share) {
             $scope.maxRatings = [];
 
-            $scope.rating = share.rating;
+            // $scope.rating = share.rating;
             $scope.$watch('rating', function() {
                 $scope._rating = share.rating;
             });
@@ -143,36 +108,7 @@ app.directive('starRating', function () {
                 $scope.maxRatings.push({});
             };
 
-            // $scope._rating = share.rating;
-            // $scope.isolatedClick = function (param) {
-            //     if ($scope.readOnly == 'true') return;
 
-            //     $scope.rating = $scope._rating = param;
-            //     $scope.hoverValue = 0;
-            //     $scope.click({
-            //         param: param
-            //     });
-            // };
-            //
-            // $scope.isolatedMouseHover = function (param) {
-            //     if ($scope.readOnly == 'true') return;
-            //
-            //     $scope._rating = 0;
-            //     $scope.hoverValue = param;
-            //     $scope.mouseHover({
-            //         param: param
-            //     });
-            // };
-            //
-            // $scope.isolatedMouseLeave = function (param) {
-            //     if ($scope.readOnly == 'true') return;
-            //
-            //     $scope._rating = $scope.rating;
-            //     $scope.hoverValue = 0;
-            //     $scope.mouseLeave({
-            //         param: param
-            //     });
-            // };
 
 
         }

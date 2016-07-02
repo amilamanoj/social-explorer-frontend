@@ -39,48 +39,23 @@ angular.module('myApp.profile')
         $scope.projects = Project.query(function() {
             $scope.loading = false;
         });
-
         $scope.user=Profile.get({userId:currUser.getUser()._id});
 
-        $scope.ratings = Rating.query({ratedUser:currUser.getUser()._id}, function () {
-            $scope.loading = false;
-            $scope.$parent.selectedIndex = 0;
-            var varIndex;
-
-            var varIndex2;
-            for (varIndex = 0; varIndex < $scope.ratings.length; ++varIndex) {
-                var appl = $scope.ratings[varIndex];
-                Project.get({projectId:appl.project}, function (proj) {
-
-                    var result = $scope.ratings.filter(function (obj) {
-                        return obj.project == proj._id;
+        //  get all ratings from the current user 
+            $scope.ratings = Rating.query({ratedUser:currUser.getUser()._id}, function () {
+                $scope.loading = false;
+            });
+            // when received the ratings, set the stars to the average of the ratings (only when there are ratings)
+            $scope.ratings.$promise.then(function() {
+                $scope.isRated = typeof $scope.ratings[0]=='undefined';
+                // set str
+                if (typeof $scope.ratings[0]!='undefined') {
+                    $scope.$watch('starRating3', function () {
+                        share.rating = $scope.ratings[0].rateAvg;
                     });
-                    result[0].pTitle = proj.title;
-                });
-            }
-            for (varIndex2 = 0; varIndex2 < $scope.ratings.length; ++varIndex2) {
-                var user = $scope.ratings[varIndex2];
-                Profile.get({userId: user.createdUser}, function (userr) {
-                    var result = $scope.ratings.filter(function (obj) {
-                        return obj.createdUser == userr._id;
-                    });
-                    result[0].cUser = userr.username;
-                });
-            }
-
-        });
-
-        $scope.ratings.$promise.then(function() {
-            console.log($scope.ratings);
-            console.log("ersaerf"+( typeof $scope.ratings[0]=='undefined'));
-            $scope.isRated = typeof $scope.ratings[0]=='undefined';
-            if (typeof $scope.ratings[0]!='undefined') {
-                $scope.$watch('starRating', function () {
-                    share.rating = $scope.ratings[0].rateAvg;
-                });
-            }
-        });
-
+                }
+            });
+        
         $scope.ratingDialog = function(ev) {
             $mdDialog.show({
 

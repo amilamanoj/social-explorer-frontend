@@ -41,7 +41,8 @@
         </md-sidenav>
 
         <md-list flex="" style="background-color: rgba(255,255,255,0.85)">
-            <md-list-item class="md-3-line animate-repeat" ng-repeat="project in projects | filter:$ctrl.query"
+            <md-list-item class="md-3-line animate-repeat" ng-repeat="project in projects
+             | filter:$ctrl.query | filter:{country: selectedCountry} | filter: dateRangeFilter"
                           ng-click="goToProject(project)">
 
                 <img data-ng-src="data:image/png;base64,{{project.img}}" class="md-avatar"/>

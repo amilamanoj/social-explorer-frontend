@@ -1,3 +1,4 @@
+<div ng-controller="ProfileRatingCtrl">
 
 
 <div style="background-color: rgba(255, 255, 255, 0.5)">
@@ -10,30 +11,17 @@
     <div flex="47">
 
 
-        <md-card style="background-color: rgba(255, 255, 255, 0.5)">
-            <div layout="row" layout-align="space-around stretch" class="md-headline" ><strong>{{project.title}}</strong></div>
-
-        </md-card>
-
-        <div layout="row" layout-align="space-around stretch" class="md-avatar"><img data-ng-src="data:image/png;base64,{{project.img}}" width="100%" height="100%" layout-margin="100%"/></div>
+        <div class="md-avatar"><img data-ng-src="data:image/png;base64,{{project.img}}" width="100%" height="100%" layout-margin="100%"/></div>
 
         <md-card style="background-color: rgba(255, 255, 255, 0.5)">
-            <md-card-title>
-                <md-card-title-text>
-                    <div class="md-title" layout-margin="10%">Project creator: </div>
-                    <div layout="row" class="md-subhead md-primary " layout-margin="100%"> {{projectUser.username}}</div>
-                    <div ng-if="loggedIn" layout="row" class="md-subhead md-primary " layout-margin="100%"> E-mail: {{projectUser.email}}</div>
-                    <div ng-include="'views/rating/rating-read.html'" layout-margin="1px" ></div>
-                </md-card-title-text>
-                <md-card-title-media >
-                    <div class="md-media-sm card-media"><img data-ng-src="data:image/png;base64,{{projectUser.img}}"/></div>
-                </md-card-title-media>
-            </md-card-title>
-            <md-card-actions layout="row" layout-align="begin center" ng-click="lookAtProfile($event)">
-                <md-button>Look at the Profile</md-button>
-            </md-card-actions>
-        </md-card>
 
+        <div class="md-title"><strong>About the project:</strong></div>
+        <div layout="row" class="md-subhead md-primary " layout-margin="100%"> {{project.description}}</div>
+        <div class="md-title"><strong>The goal of the project:</strong></div>
+        <div layout="row"   layout-margin="100%" class="md-subhead md-primary "> {{project.objective}}</div>
+
+
+            </md-card>
     </div>
 
             <div flex="5">
@@ -42,33 +30,48 @@
 
 
     <div flex="48">
+        <div class="md-headline" layout-align="center center" ><strong>{{project.title}}</strong></div>
 
         <!--<div layout="row" layout-margin="10%"> Rating: {{project.mpaa_rating}}</div>-->
 <br>
 
         <div flex-xs flex-gt-xs="100" layout="column" >
             <md-card style="background-color: rgba(255, 255, 255, 0.5)">
-                <div class="md-title" layout-margin="10%">About the project: </div>
-                <div layout="row" class="md-subhead md-primary " layout-margin="100%"> {{project.description}}</div>
-                <div class="md-title" layout-margin="10%">Goal: </div>
-                <div layout="row"   layout-margin="100%" class="md-subhead md-primary "> {{project.objective}}</div>
+                <md-card-title>
+                    <md-card-title-text>
+                        <div layout="row">
+                        <span >About the Host</span>
+                        </div>
+                        <span class="md-headline">{{projectUser.username}}</span>
+                        <span ng-if="loggedIn" class="md-subhead">E-Mail: {{projectUser.email}}</span>
+                    </md-card-title-text>
+                    <md-card-title-media >
+                        <div class="md-media-sm card-media"><img data-ng-src="data:image/png;base64,{{projectUser.img}}"/></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="begin center" ng-click="lookAtProfile($event)">
+                    <md-button>Look at the Profile</md-button>
+                </md-card-actions>
             </md-card>
 
         <div layout="row"></div>
 
             <md-card style="background-color: rgba(255, 255, 255, 0.5)">
 
-                <div class="md-title" layout-margin="10%">Details</div>
-                <div layout="row" layout-margin="10%">
-                    <div><strong>Country:&nbsp; </strong> {{project.country}} &nbsp;&nbsp;&nbsp;&nbsp;</div>
-                    <div><strong>City:&nbsp;</strong> {{project.city}} </div>
-                </div>
-                <div layout="row" layout-margin="10%">
-                    <div><strong>Starting Date:&nbsp;</strong> {{project.fromDate | date:"MM/dd/yyyy"}}&nbsp;</div>
-                    <div><strong>Ending Date:&nbsp;</strong> {{project.toDate | date:"MM/dd/yyyy"}}&nbsp;</div>
-                </div>
-            </md-card>
+        <div class="md-title" layout-margin="10%">Details about the Project</div>
 
+        <div layout="row" layout-margin="10%">
+
+            <div><strong>Country:&nbsp; </strong> {{project.country}} &nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div><strong>City:&nbsp;</strong> {{project.city}} </div>
+
+        </div>
+        <div layout="row" layout-margin="10%">
+                <div><strong>Starting Date:&nbsp;</strong> {{project.fromDate | date:"MM/dd/yyyy"}}&nbsp;</div>
+                <div><strong>Ending Date:&nbsp;</strong> {{project.toDate | date:"MM/dd/yyyy"}}&nbsp;</div>
+        </div>
+
+</md-card>
             <p layout="row" layout-align="center center">
                 <md-button   class=" md-raised" ng-click="applyForProject($event)" ng-if="canApply">
                     <md-icon md-svg-icon="action:ic_face_24px"></md-icon>
@@ -93,6 +96,7 @@
 
 
 
+</div>
 
 
 

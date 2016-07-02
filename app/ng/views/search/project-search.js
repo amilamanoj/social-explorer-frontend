@@ -28,24 +28,21 @@ angular.module('myApp.projects')
 
     })
 
-    .controller('ProjectSearchCtrl', function($scope, $state, Project) {
+    .controller('ProjectSearchCtrl', function($scope, $state, Project, CountryService) {
         $scope.projects = Project.query();
         $scope.goToProject = goToProject;
         //$scope.searchProject = searchProject;
         $scope.selectedFromDate = new Date();
         $scope.selectedToDate = new Date();
+        $scope.countries = CountryService.countries;
 
-        //$scope.project = Project.get({projectId: $stateParams.projectId});
+        $scope.dateRangeFilter = function (project) {
 
-        function searchProject() {
-            //get the fromDate user has picked in the date picker
+            var projectFromDate = new Date(project.fromDate);
+            var projectToDate = new Date(project.toDate);
 
-            //compare this date with the fromDates of the project base
-
-            //show results
-
-            //do the same for toDate, host and country too
-        }
+            return $scope.selectedFromDate < projectFromDate && $scope.selectedToDate > projectToDate;
+        };
 
         function goToProject(proj){
             console.log("going to project");
