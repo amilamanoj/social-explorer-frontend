@@ -62,9 +62,7 @@ angular.module('myApp.projects')
 
             });
         });
-
-
-
+        
 
         $scope.$watch(function(){
             return currUser.loggedIn();
@@ -79,6 +77,10 @@ angular.module('myApp.projects')
         });
 
         ////////////////////
+        
+        $scope.goToApplication = function (ev){
+            $state.go("profile.applications");
+        }
 
         $scope.applyForProject = function(ev) {
             // Appending dialog to document.body to cover sidenav in docs app
