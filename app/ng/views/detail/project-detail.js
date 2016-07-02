@@ -40,8 +40,7 @@ angular.module('myApp.projects')
 
         $scope.project = Project.get({projectId: $stateParams.projectId});
 
-
-        $scope.mayDelete;
+            $scope.mayDelete;
         $scope.mayEdit = currUser.loggedIn();
         $scope.deleteProject = deleteProject;
         $scope.updateProject = updateProject;
@@ -55,9 +54,15 @@ angular.module('myApp.projects')
             });
             $scope.functionForInsert($scope.project.user);
 
+            $scope.applications = Application.query({applicant:currUser.getUser()._id, project:$scope.project._id});
+            $scope.applications.$promise.then(function(){
+              
+                $scope.alreadyApply = typeof $scope.applications[0]!='undefined';
+
+
+            });
         });
-
-
+        
 
         $scope.$watch(function(){
             return currUser.loggedIn();
@@ -72,6 +77,10 @@ angular.module('myApp.projects')
         });
 
         ////////////////////
+        
+        $scope.goToApplication = function (ev){
+            $state.go("profile.applications");
+        }
 
         $scope.applyForProject = function(ev) {
             // Appending dialog to document.body to cover sidenav in docs app
