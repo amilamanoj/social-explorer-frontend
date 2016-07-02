@@ -17,10 +17,10 @@
             <!--<img data-ng-src="data:image/png;base64,{{project.img}}" class="md-avatar" />-->
 
             <div style="width:700px" class="md-list-item-text" layout="column" >
-                <h3>Project: {{ rating.pTitle }}</h3>
+                <h3>Project: {{ rating.project.title }}</h3>
                 <div star-rating2 rating="rating.rate" read-only="true" max-rating="5"  ></div>
             <h3>{{ rating.description }}</h3>
-                <h3>Rated from User: {{ rating.cUser }}</h3>
+                <h3>Rated from User: {{ rating.createdUser.username }}</h3>
 
           </div>
         </md-list-item>
