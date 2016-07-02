@@ -91,7 +91,6 @@ angular.module('myApp.profile')
 
 
         $scope.functionForInsert = function( project, ratedUser,host){
-
             shareDataServiceRating.addProduct( project,ratedUser, host);
         };
 
