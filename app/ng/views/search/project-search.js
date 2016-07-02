@@ -28,12 +28,13 @@ angular.module('myApp.projects')
 
     })
 
-    .controller('ProjectSearchCtrl', function($scope, $state, Project) {
+    .controller('ProjectSearchCtrl', function($scope, $state, Project, CountryService) {
         $scope.projects = Project.query();
         $scope.goToProject = goToProject;
         //$scope.searchProject = searchProject;
         $scope.selectedFromDate = new Date();
         $scope.selectedToDate = new Date();
+        $scope.countries = CountryService.countries;
 
         //$scope.project = Project.get({projectId: $stateParams.projectId});
 

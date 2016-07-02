@@ -36,7 +36,7 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileEditProjCtrl', function($state, $scope, $rootScope, $mdToast, $stateParams, Project, currUser) {
+    .controller('ProfileEditProjCtrl', function($state, $scope, $rootScope, $mdToast, $stateParams, Project, currUser, CountryService) {
 
         $scope.updateProject = updateProject;
         $scope.cancel = cancel;
@@ -81,6 +81,8 @@ angular.module('myApp.profile')
         function cancel(){
             $state.go('profile.overview')
         }
+
+        $scope.countries = CountryService.countries;
 
         function showSimpleToast(txt){
             $mdToast.show(
