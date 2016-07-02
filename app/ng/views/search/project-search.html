@@ -16,12 +16,6 @@
             </md-content>
             <md-content layout-padding="5">
                 <div layout=>
-                    <h4 style="margin-top:10px">Search by host: &nbsp</h4>
-                    <input flex="" ng-model="selectedHost">
-                </div>
-            </md-content>
-            <md-content layout-padding="5">
-                <div layout=>
                     <h4 style="margin-top:10px">Search by date: &nbsp</h4>
                 <md-datepicker ng-model="selectedFromDate" md-placeholder="From"></md-datepicker>
                 <md-datepicker ng-model="selectedToDate" md-placeholder="To"></md-datepicker>
@@ -32,12 +26,9 @@
                     <h4 style="margin-top:10px">Search by country: &nbsp</h4>
                     <md-select flex  ng-model="selectedCountry">
                         <md-option ng-repeat="country in countries" value="{{country}}">{{country}}</md-option>
-                    </md-select>                </div>
+                    </md-select>
+                </div>
             </md-content>
-            <md-button ng-click="searchProject()">
-                <md-icon></md-icon>
-                Search for a project
-            </md-button>
         </md-sidenav>
 
         <md-list flex="" style="background-color: rgba(255,255,255,0.85)">
