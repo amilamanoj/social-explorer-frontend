@@ -100,7 +100,7 @@ app.directive('starRating', function () {
         controller: function ($scope, $element, $attrs, share) {
             $scope.maxRatings = [];
 
-            $scope.rating = share.rating;
+            // $scope.rating = share.rating;
             $scope.$watch('rating', function() {
                 $scope._rating = share.rating;
             });
