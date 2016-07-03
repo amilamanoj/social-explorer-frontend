@@ -45,6 +45,7 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
     // when received the ratings, set the stars to the average of the ratings (only when there are ratings)
         $scope.ratings.$promise.then(function() {
             $scope.isRated = typeof $scope.ratings[0]=='undefined';
+            
             // set str
             if (typeof $scope.ratings[0]!='undefined') {
                 $scope.$watch('starRating', function () {
@@ -66,15 +67,7 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
                 })
     };
 
-    $scope.ratingDialogOwn = function(ev) {
-        $mdDialog.show({
 
-            templateUrl: 'views/profile/ratings-all-own.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose: true
-        })
-    };
 
 });
 

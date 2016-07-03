@@ -70,7 +70,7 @@ angular.module('myApp.profile')
                 }
             });
         
-        $scope.ratingDialog = function(ev) {
+        $scope.ratingDialogOwn = function(ev) {
             $mdDialog.show({
 
                 templateUrl: 'views/profile/ratings-all-own.html',
