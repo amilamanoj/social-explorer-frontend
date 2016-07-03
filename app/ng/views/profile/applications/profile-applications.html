@@ -8,7 +8,7 @@
 
         <img id="mySpinner" src="ripple.gif" ng-show="loading" />
 
-        <md-list-item class="md-3-line" ng-repeat="application in applications " ng-click="null" >
+        <md-list-item class="md-3-line" ng-repeat="application in applications " ng-click="null"  >
 
             <img data-ng-src="data:image/png;base64,{{project.img}}" class="md-avatar" />
 
@@ -23,9 +23,14 @@
                 <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
             </md-button>
             <!--the rate button should be only available when the STATUS is accepted and only the project was rated-->
+            <md-button flex class="md-secondary" ng-if="application.status==='ACCEPTED'" ng-click="goToProject(application.project)" style="margin-right:100px">
+
+                <md-icon md-svg-icon="communication:ic_email_24px"></md-icon>Contact via Email
+            </md-button>
+
             <md-button flex class="md-secondary" ng-if="application.status==='ACCEPTED'" ng-click="rating($event);
             functionForInsert(application.project, application.applicant, application.host, application._id)" >
-               Rate
+                <md-icon md-svg-icon="action:ic_stars_24px"></md-icon> Rate
             </md-button>
 
             <md-divider ></md-divider>

@@ -94,7 +94,10 @@ angular.module('myApp.profile')
             shareDataServiceRating.addProduct( project,ratedUser, host, id);
         };
 
-        
+        $scope.goToProject=function (proj){
+            console.log("going to project");
+            $state.go('projects.detail', {'projectId': proj });
+        };
 
     });
 
