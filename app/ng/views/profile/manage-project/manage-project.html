@@ -14,9 +14,9 @@
 
             <div style="width:700px" class="md-list-item-text" layout="column" >
                 <h3>User: {{ application.pApplicant.username }}</h3>
-                <h4>Sent on: {{ application.createdDate }}</h4>
+                <h4>Sent on: {{ application.createdDate | date:"MM/dd/yyyy 'at' h:mma" }}</h4>
                 <h3>Status: <span class="{{ application.status }}">{{ application.status }}</span></h3>
-                <h4 ng-if="application.status!=='PENDING'">{{ application.status }} on {{ application.processedDate}}</h4>
+                <h4 ng-if="application.status!=='PENDING'">{{ application.status }} on {{ application.processedDate | date:"MM/dd/yyyy 'at' h:mma"}}</h4>
             </div>
 
             <md-divider ></md-divider>
