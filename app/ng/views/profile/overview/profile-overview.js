@@ -33,10 +33,24 @@ angular.module('myApp.profile')
 
     })
 
-    .controller('ProfileOverviewCtrl', function($scope, share, $state, Profile, Rating, $mdDialog, $stateParams, currUser, Project) {
+    .controller('ProfileOverviewCtrl', function($scope, share, $state, Profile, Rating, $mdDialog, $stateParams, currUser, Project, Application) {
 
         $scope.loading = true;
         $scope.projects = Project.query({user:currUser.getUser()._id}, function() {
+            var varIndex;
+
+            for (varIndex = 0; varIndex < $scope.projects.length; ++varIndex) {
+                var currProj =  $scope.projects[varIndex];
+                Application.query({host:currUser.getUser()._id, project:currProj._id, status: 'PENDING'}, function(appl) {
+                    var result = $scope.projects.filter(function( obj ) {
+                        return appl[0] && obj._id == appl[0].project;
+                    });
+                    if (result[0]) {
+                        result[0].pendingAppl = appl.length;
+                    }
+                });
+
+            }
             $scope.loading = false;
         });
         $scope.user=Profile.get({userId:currUser.getUser()._id});

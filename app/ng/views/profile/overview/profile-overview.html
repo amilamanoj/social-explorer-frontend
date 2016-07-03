@@ -26,8 +26,12 @@
                 <md-icon md-svg-icon="editor:ic_mode_edit_24px"></md-icon>
             </md-button>
 
+
             <md-button class="md-secondary" ng-click="goToManageProject(project)" style="margin-right:180px" >
-                Applications
+                <div layout="column">
+                <span>Applications </span>
+                    <span  ng-if="project.pendingAppl" class="notification">{{project.pendingAppl}} New</span>
+                </div>
             </md-button>
 
             <md-divider ></md-divider>
