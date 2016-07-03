@@ -8,16 +8,6 @@
 
     <div layout="row" layout-align="center center">
 
-        <!--<md-toolbar>-->
-        <!--<div class="md-toolbar-tools">-->
-        <!--<h2> About the Host</h2>-->
-        <!--<span flex></span>-->
-        <!--<md-button class="md-icon-button" ng-click="cancel()">-->
-        <!--<md-icon md-svg-src="logo_updated.png" aria-label="Close dialog"></md-icon>-->
-        <!--</md-button>-->
-        <!--</div>-->
-        <!--</md-toolbar>-->
-        <!--<br>-->
         <md-card layout="row" layout-align="center center">
             <md-card-title-media >
                 <div class="md-avatar" ><img data-ng-src="data:image/png;base64,{{user.img}}" style='max-height: 100%; max-width: 200px' /></div>
@@ -26,7 +16,7 @@
 
                 <md-card-title-text>
 
-                    <div class="md-headline">Name: {{user.username}}</div> <!--Now it´s always the logged in username-->
+                    <div class="md-headline">Name: {{user.username}}</div>
                     <div class="md-subhead">E-Mail: {{user.email}}</div>
                     <div ng-if="!isRated">
                     <div star-rating  read-only="true" max-rating="5" ng-click="null" ></div>
