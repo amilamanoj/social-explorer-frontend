@@ -36,7 +36,7 @@ angular.module('myApp.profile')
     .controller('ProfileOverviewCtrl', function($scope, share, $state, Profile, Rating, $mdDialog, $stateParams, currUser, Project) {
 
         $scope.loading = true;
-        $scope.projects = Project.query(function() {
+        $scope.projects = Project.query({user:currUser.getUser()._id}, function() {
             $scope.loading = false;
         });
         $scope.user=Profile.get({userId:currUser.getUser()._id});
