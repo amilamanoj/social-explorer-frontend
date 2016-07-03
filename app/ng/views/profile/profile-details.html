@@ -1,5 +1,5 @@
 <div ng-controller="ProfileOverviewCtrl">
-
+    <div ng-controller="ProfileRatingCtrl">
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>Profile of {{user.username}}</h2>
@@ -31,6 +31,7 @@
                     <div ng-if="!isRated">
                     <div star-rating  read-only="true" max-rating="5" ng-click="ratingDialog($event)" ></div>
                     <div> <span class="label label-primary"> Rating: {{ratings[0].rateAvg}}</span>
+                        <md-button ng-click="ratingDialogOwn($event)">See all ratings</md-button>
                     </div>
                         </div>
                     <div ng-if="isRated">
@@ -61,7 +62,7 @@
         <md-button  class=" md-accent">Back</md-button>
     </md-card-actions>
     
-
+</div>
 </div>
 
 

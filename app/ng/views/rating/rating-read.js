@@ -66,6 +66,16 @@ app.controller('ProfileRatingCtrl', function($scope, $state, Profile, share,shar
                 })
     };
 
+    $scope.ratingDialogOwn = function(ev) {
+        $mdDialog.show({
+
+            templateUrl: 'views/profile/ratings-all-own.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        })
+    };
+
 });
 
 app.factory('share', function() {
